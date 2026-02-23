@@ -1,0 +1,40 @@
+import org.apache.spark._
+
+ import org.apache.spark.rdd.RDD
+
+import org.apache.spark.graphx._
+
+val vertices = Array((1L,("Mumbai",12442373)),(2L,("Delhi",11034555)),(3L,("Banglore",2443675)),(4L,("Hyderabad",6993262)))
+val vertices = Array((1L, ("1")), (2L, ("2")),(3L,("3")),(4L,("4")))
+
+val vRDD= sc.parallelize(vertices)
+
+ vRDD.take(1)
+
+ val edges = Array(Edge(1L,2L,1394),Edge(1L,3L,837),Edge(1L,4L,623),Edge(2L,3L,1741),Edge(2L,4L,1259),Edge(3L,4L,497))
+
+ val eRDD= sc.parallelize(edges)
+
+eRDD.take(2)
+
+val nowhere = "nowhere"
+
+ val graph = Graph(vRDD,eRDD,nowhere)
+
+ graph.vertices.collect.foreach(println)
+
+ graph.edges.collect.foreach(println)
+
+ val lucky = graph.numVertices
+
+val lucky1 = graph.numEdges
+
+ graph.edges.filter { case Edge(src, dst, prop) => prop > 1000}.collect.foreach(println)
+
+ graph.triplets.take(3).foreach(println)
+
+ val f = graph.inDegrees
+
+ f.collect()
+
+val totalDegrees = graph.degrees

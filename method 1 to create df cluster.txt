@@ -1,0 +1,80 @@
+Microsoft Windows [Version 10.0.26100.6899]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\System32>spark-shell
+25/10/27 18:49:07 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: Hadoop bin directory does not exist: C:\hadoopsetup\hadoop-3.2.4\bin -see https://wiki.apache.org/hadoop/WindowsProblems
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Spark context Web UI available at http://luckysteven:4040
+Spark context available as 'sc' (master = local[*], app id = local-1761571158926).
+Spark session available as 'spark'.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 3.5.6
+      /_/
+
+Using Scala version 2.12.18 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_441)
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala>
+
+scala> import spark.implicits._
+import spark.implicits._
+
+scala> val col=Seq("team","matches)
+<console>:1: error: unclosed string literal
+       val col=Seq("team","matches)
+                          ^
+
+scala> val col=Seq("team","matches")
+col: Seq[String] = List(team, matches)
+
+scala> val data=Seq(("india",300),("aus",300),("eng",344))
+data: Seq[(String, Int)] = List((india,300), (aus,300), (eng,344))
+
+scala> val rdd=spark.sparkContect.parallize(data)
+<console>:26: error: value sparkContect is not a member of org.apache.spark.sql.SparkSession
+       val rdd=spark.sparkContect.parallize(data)
+                     ^
+
+scala> val rdd=spark.sparkContext.parallize(data)
+<console>:26: error: value parallize is not a member of org.apache.spark.SparkContext
+       val rdd=spark.sparkContext.parallize(data)
+                                  ^
+
+scala> val rdd=spark.sparkContext.parallelize(data)
+rdd: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[0] at parallelize at <console>:26
+
+scala> val df1=rdd.toDF()
+df1: org.apache.spark.sql.DataFrame = [_1: string, _2: int]
+
+scala> dfl.show()
+<console>:26: error: not found: value dfl
+       dfl.show()
+       ^
+
+scala> df1.show()
++-----+---+
+|   _1| _2|
++-----+---+
+|india|300|
+|  aus|300|
+|  eng|344|
++-----+---+
+
+
+scala>
+scala> val df1=spark.createDataFrame(rdd).toDF(col:_*)
+df1: org.apache.spark.sql.DataFrame = [team: string, matches: int]
+
+scala> df1.show()
++-----+-------+
+| team|matches|
++-----+-------+
+|india|    300|
+|  aus|    300|
+|  eng|    344|
++-----+-------+

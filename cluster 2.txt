@@ -1,0 +1,505 @@
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=set(1,2,3,4)
+
+// Exiting paste mode, now interpreting.
+
+<console>:22: error: not found: value set
+       val a=set(1,2,3,4)
+             ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Set(1,2,3,4)
+
+// Exiting paste mode, now interpreting.
+
+a: scala.collection.immutable.Set[Int] = Set(1, 2, 3, 4)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Seq(1,2,3,4)
+
+// Exiting paste mode, now interpreting.
+
+a: Seq[Int] = List(1, 2, 3, 4)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Seq(1,2,3,4)
+a(0)
+
+// Exiting paste mode, now interpreting.
+
+a: Seq[Int] = List(1, 2, 3, 4)
+res0: Int = 1
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Map(("A",10)("B",20))
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:22: error: (String, Int) does not take parameters
+val a=Map(("A",10)("B",20))
+                  ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val s=Set(1,2,3,4)
+val a=s.apply(10)
+println(a)
+
+// Exiting paste mode, now interpreting.
+
+false
+s: scala.collection.immutable.Set[Int] = Set(1, 2, 3, 4)
+a: Boolean = false
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val s=Seq(1,2,3,4)
+val a=s.apply(2)
+println(a)
+
+// Exiting paste mode, now interpreting.
+
+3
+s: Seq[Int] = List(1, 2, 3, 4)
+a: Int = 3
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val s=Map(("a",1),("a",3))
+val a=s.apply("a")
+
+// Exiting paste mode, now interpreting.
+
+s: scala.collection.immutable.Map[String,Int] = Map(a -> 3)
+a: Int = 3
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val s=Map(("a",1),("b",3))
+val a=s.apply("b")
+println(a)
+
+// Exiting paste mode, now interpreting.
+
+3
+s: scala.collection.immutable.Map[String,Int] = Map(a -> 1, b -> 3)
+a: Int = 3
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Set(1,2,3,4,5,6)
+val s=a.apply(2)
+println(s)
+
+// Exiting paste mode, now interpreting.
+
+true
+a: scala.collection.immutable.Set[Int] = Set(5, 1, 6, 2, 3, 4)
+s: Boolean = true
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Seq(1,2,3,4,5,6)
+val s=a.apply(2)
+println(s)
+
+// Exiting paste mode, now interpreting.
+
+3
+a: Seq[Int] = List(1, 2, 3, 4, 5, 6)
+s: Int = 3
+
+scala> val s=Map(("a",1),("b",3),("c",4))
+s: scala.collection.immutable.Map[String,Int] = Map(a -> 1, b -> 3, c -> 4)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val s=Map(("a",1),("b",3),("c",4))
+val a=a.apply("c")
+println(s)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:25: error: recursive value a needs type
+val a=a.apply("c")
+      ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val s=Map(("a",1),("b",3),("c",4))
+val a=s.apply("c")
+println(a)
+
+// Exiting paste mode, now interpreting.
+
+4
+s: scala.collection.immutable.Map[String,Int] = Map(a -> 1, b -> 3, c -> 4)
+a: Int = 4
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val s=Map((1,"a"),(2,"b"),(3,"c"))
+val a=s.apply(3)
+println(a)
+
+// Exiting paste mode, now interpreting.
+
+c
+s: scala.collection.immutable.Map[Int,String] = Map(1 -> a, 2 -> b, 3 -> c)
+a: String = c
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Array(1,2,3,4)
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+1
+2
+3
+4
+a: Array[Int] = Array(1, 2, 3, 4)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Array(1,2,3,4)
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+1
+2
+3
+4
+a: Array[Int] = Array(1, 2, 3, 4)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=new Array[Int](10)
+
+// Exiting paste mode, now interpreting.
+
+a: Array[Int] = Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=new Array[Int](1..10)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:1: error: identifier expected but double literal found.
+val a=new Array[Int](1..10)
+                       ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=new Array[Int](10)
+
+// Exiting paste mode, now interpreting.
+
+a: Array[Int] = Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+scala> val a=new Array[Int](1,10)
+<console>:22: error: too many arguments (2) for constructor Array: (_length: Int)Array[Int]
+       val a=new Array[Int](1,10)
+                              ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=new Array[Int](1,10)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:22: error: too many arguments (2) for constructor Array: (_length: Int)Array[Int]
+val a=new Array[Int](1,10)
+                       ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=new Array[Int](10)
+
+// Exiting paste mode, now interpreting.
+
+a: Array[Int] = Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Array(1,2,3,4,5,6,7,8,9,10)
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+a: Array[Int] = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Array.range(0,10)
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+a: Array[Int] = Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Array.fill(3)("scala")
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+scala
+scala
+scala
+a: Array[String] = Array(scala, scala, scala)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a="scala".toArray
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+s
+c
+a
+l
+a
+a: Array[Char] = Array(s, c, a, l, a)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val arr=Array(1,2,3,4,5,6,7,8,9,10)
+val r=arr.filter(_%2==0)
+
+// Exiting paste mode, now interpreting.
+
+arr: Array[Int] = Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+r: Array[Int] = Array(2, 4, 6, 8, 10)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val r=arr.filter(_%2==0)
+val r=arr.filter(_*3)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:24: error: r is already defined as value r
+val r=arr.filter(_*3)
+    ^
+<pastie>:24: error: type mismatch;
+ found   : Int
+ required: Boolean
+val r=arr.filter(_*3)
+                  ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val r=arr.filter(_%2==0)
+val r=arr.map(_*3)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:24: error: r is already defined as value r
+val r=arr.map(_*3)
+    ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val r=arr.map(_*3)
+
+// Exiting paste mode, now interpreting.
+
+r: Array[Int] = Array(3, 6, 9, 12, 15, 18, 21, 24, 27, 30)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val r=arr.reverse()
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:23: error: not enough arguments for method apply: (i: Int)Int in class Array.
+Unspecified value parameter i.
+val r=arr.reverse()
+                 ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val r=arr.reverse
+
+// Exiting paste mode, now interpreting.
+
+r: Array[Int] = Array(10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Array(100,200,300,400,500)
+val b=a.map(*5)
+val c=a.reverse
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:2: error: ')' expected but integer literal found.
+val b=a.map(*5)
+             ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Array(100,200,300,400,500)
+val b=a.map(_*5)
+val c=a.reverse
+
+// Exiting paste mode, now interpreting.
+
+a: Array[Int] = Array(100, 200, 300, 400, 500)
+b: Array[Int] = Array(500, 1000, 1500, 2000, 2500)
+c: Array[Int] = Array(500, 400, 300, 200, 100)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=Array(100,200,300,400,500)
+val b=a.map(_*5)
+val c=b.reverse
+
+// Exiting paste mode, now interpreting.
+
+a: Array[Int] = Array(100, 200, 300, 400, 500)
+b: Array[Int] = Array(500, 1000, 1500, 2000, 2500)
+c: Array[Int] = Array(2500, 2000, 1500, 1000, 500)
+
+scala> import scala.ollection.mutable.ArrayBuffer
+<console>:22: error: object ollection is not a member of package scala
+       import scala.ollection.mutable.ArrayBuffer
+                    ^
+
+scala> import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable.ArrayBuffer
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=ArrayBuffer("sf","dfd")
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+sf
+dfd
+a: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(sf, dfd)
+
+scala> a(2)=+"pdf"
+<console>:25: error: value =+ is not a member of String
+       a(2)=+"pdf"
+           ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=ArrayBuffer("sf","dfd")
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+sf
+dfd
+a: scala.collection.mutable.ArrayBuffer[String] = ArrayBuffer(sf, dfd)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=ArrayBuffer(1,2,3,4)
+a+=6
+
+// Exiting paste mode, now interpreting.
+
+a: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, 3, 4, 6)
+res18: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, 3, 4, 6)
+
+scala> a-=5
+res19: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, 3, 4, 6)
+
+scala> a-=4
+res20: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, 3, 6)
+
+scala> a.remove(1)
+res21: Int = 2
+
+scala> a.clear()
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=ArrayBuffer(1,2,3,4)
+a+=6
+a+=7
+
+// Exiting paste mode, now interpreting.
+
+a: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, 3, 4, 6, 7)
+res23: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, 3, 4, 6, 7)
+
+scala> a-=6
+res24: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, 3, 4, 7)
+
+scala> a.remove(0)
+res25: Int = 1

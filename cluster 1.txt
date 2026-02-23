@@ -1,0 +1,630 @@
+
+scala> val a=23
+a: Int = 23
+
+scala> val b='a'
+b: Char = a
+
+scala> val c=b
+c: Char = a
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=12
+val b=a
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 12
+b: Int = 12
+
+scala> val c=a
+c: Int = 12
+
+scala> val old:char='a'
+<console>:22: error: not found: type char
+       val old:char='a'
+               ^
+
+scala> val old='a'
+old: Char = a
+
+scala> val a=12d
+a: Double = 12.0
+
+scala> val b=a
+b: Double = 12.0
+
+scala> val a=12
+a: Int = 12
+
+scala> val b=a
+b: Int = 12
+
+scala> val a=12
+a: Int = 12
+
+scala> val b=a.toFloat
+b: Float = 12.0
+
+scala> val a=12
+a: Int = 12
+
+scala> val b=2
+b: Int = 2
+
+scala> val c=a/b
+c: Int = 6
+
+scala> val d=a*b
+d: Int = 24
+
+scala> val e=a>=b
+e: Boolean = true
+
+scala> val f=a>=b
+f: Boolean = true
+
+
+
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var x=69
+x&=22
+
+// Exiting paste mode, now interpreting.
+
+x: Int = 4
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var x=59
+x&=4
+
+// Exiting paste mode, now interpreting.
+
+x: Int = 0
+
+scala> var a=23
+a: Int = 23
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=69
+x^22
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 69
+res2: Int = 22
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=69
+x^=22
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 69
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var x=69
+x^=22
+
+// Exiting paste mode, now interpreting.
+
+x: Int = 83
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=97
+a^=32
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 65
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=36
+a^=7
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 35
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=69
+a|=22
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 87
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+vatr a=59
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:22: error: not found: value vatr
+vatr a=59
+^
+<pastie>:23: error: not found: value vatr
+val $ires6 = vatr.a
+             ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=59
+a|=4
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 63
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=97
+a|32
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 97
+res9: Int = 97
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=97
+a|=32
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 97
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=97
+a|=32
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 97
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=36
+a|=7
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 39
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=2
+a~=3
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:26: error: value ~= is not a member of Int
+  Expression does not convert to assignment because receiver is not assignable.
+a~=3
+ ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=2
+a~=2
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:26: error: value ~= is not a member of Int
+  Expression does not convert to assignment because:
+    value ~ is not a member of Int
+    expansion: a = a.<$tilde: error>(2)
+a~=2
+ ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=4
+~a
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 4
+res15: Int = -5
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=2
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 2
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=3
+var b=3
+a<<b
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 3
+b: Int = 3
+res16: Int = 24
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=3
+var c=4
+var b=a|b
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:26: error: recursive variable b needs type
+var b=a|b
+        ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=3
+var c=4
+a|c
+
+// Exiting paste mode, now interpreting.
+
+a: Int = 3
+c: Int = 4
+res17: Int = 7
+
+scala>
+scala> val hex=0xC7
+hex: Int = 199
+
+scala> val hex=OxC7
+<console>:22: error: not found: value OxC7
+       val hex=OxC7
+               ^
+
+scala> val hex=0x0C7
+hex: Int = 199
+
+scala> import scala.io.Stdln.readLine
+<console>:22: error: object Stdln is not a member of package io
+       import scala.io.Stdln.readLine
+                       ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+import scala.io.Stdln.readLine
+val a=readLine()
+print(a)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:22: error: object Stdln is not a member of package io
+import scala.io.Stdln.readLine
+                ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+import scala.io.StdIn.readLine
+val a = readLine()
+print(a)
+
+// Exiting paste mode, now interpreting.
+
+♦♦♦♦♦import scala.io.StdIn.readLine
+a: String = ?????
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+import scala.io.StdIn.readLine
+val a = readLine()
+print(a)
+
+// Exiting paste mode, now interpreting.
+
+thisdfwfefefffefwefefimport scala.io.StdIn.readLine
+a: String = this?sdfwfefefffefwefef
+
+scala>
+
+scala> val a = scala.io.StdIn.readLine()
+a: String = print(a)
+
+scala> import scala.io.StdIn.readLine
+import scala.io.StdIn.readLine
+
+scala> val a = readLine()
+a: String = print(a)hi lucky
+
+scala> import scala.io.StdIn.readLine
+import scala.io.StdIn.readLine
+
+scala> val a = readLine()
+a: String = print(a)?
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+import scala.io.StdIn.readLine
+val a = readLine()
+print(a)
+
+// Exiting paste mode, now interpreting.
+
+luckyimport scala.io.StdIn.readLine
+a: String = lucky
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+import scala.io.StdIn.readLine
+val a = readLine()
+print(a)
+
+// Exiting paste mode, now interpreting.
+
+final year studentimport scala.io.StdIn.readLine
+a: String = final year student
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+import scala.io.StdIn.readLine
+val a = readLine()
+print(a)
+
+// Exiting paste mode, now interpreting.
+
+tyyyimport scala.io.StdIn.readLine
+a: String = thsjaihji???????????tyyy
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val marks=90
+if(marks>=90){
+println("excellent performance")
+}
+
+// Exiting paste mode, now interpreting.
+
+excellent performance
+marks: Int = 90
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val marks=60
+if(marks>=90){
+println("excellent performance")
+}
+
+// Exiting paste mode, now interpreting.
+
+marks: Int = 60
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val marks=60
+if(marks>=90){
+println("excellent performance")
+}
+else{
+prinyln("false")
+}
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:43: error: not found: value prinyln
+prinyln("false")
+^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val marks=60
+if(marks>=90){
+println("excellent performance")
+}
+else{
+println("false")
+}
+
+// Exiting paste mode, now interpreting.
+
+false
+marks: Int = 60
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val marks=60
+if(marks%2==0){
+println("even")
+}
+else{
+println("odd")
+}
+
+// Exiting paste mode, now interpreting.
+
+even
+marks: Int = 60
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+import scala.io.StdIn.readLine
+val a = readLine()
+print(a)
+
+// Exiting paste mode, now interpreting.
+
+0import scala.io.StdIn.readLine
+a: String = 0
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+if(a>0){
+println("positive")
+}
+else if(a<0){
+println("negative")
+}
+else{
+println("zero")
+}
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:39: error: type mismatch;
+ found   : Int(0)
+ required: String
+if(a>0){
+     ^
+<pastie>:42: error: type mismatch;
+ found   : Int(0)
+ required: String
+else if(a<0){
+          ^
+
+scala> import scala.io.StdIn.readLine
+import scala.io.StdIn.readLine
+
+scala> val a = readLine()
+a: String = print(a)0
+
+scala> import scala.io.StdIn.readLine
+import scala.io.StdIn.readLine
+
+scala> val a = readLine()
+a: String = print(a)?
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+import scala.io.StdIn.readLine
+val a = readLine()
+val a = readLine()
+
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:43: error: a is already defined as value a
+val a = readLine()
+    ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+import scala.io.StdIn.readLine
+val a=readInt()
+print(a)
+
+// Exiting paste mode, now interpreting.
+
+warning: one deprecation (since 2.11.0); for details, enable `:setting -deprecation' or `:replay -deprecation'
+java.lang.NumberFormatException: For input string: "?"
+  at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+  at java.lang.Integer.parseInt(Integer.java:569)
+  at java.lang.Integer.parseInt(Integer.java:615)
+  at scala.collection.immutable.StringLike.toInt(StringLike.scala:310)
+  at scala.collection.immutable.StringLike.toInt$(StringLike.scala:310)
+  at scala.collection.immutable.StringOps.toInt(StringOps.scala:33)
+  at scala.io.StdIn.readInt(StdIn.scala:122)
+  at scala.io.StdIn.readInt$(StdIn.scala:117)
+  at scala.io.StdIn$.readInt(StdIn.scala:241)
+  at scala.DeprecatedPredef.readInt(Predef.scala:566)
+  at scala.DeprecatedPredef.readInt$(Predef.scala:566)
+  at scala.Predef$.readInt(Predef.scala:116)
+  ... 64 elided
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val string1="hello world"
+val result=string1.indexOf('w')
+print(result)
+
+// Exiting paste mode, now interpreting.
+
+6string1: String = hello world
+result: Int = 6
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a="hello"
+println(a.toupperCase)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:45: error: value toupperCase is not a member of String
+println(a.toupperCase)
+          ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a="hello"
+println(a.touppercase)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:45: error: value touppercase is not a member of String
+println(a.touppercase)
+          ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a="hello"
+println(a.toUpperCase)
+
+// Exiting paste mode, now interpreting.
+
+HELLO
+a: String = hello
+
+
+
+
+
+
+

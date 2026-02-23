@@ -1,0 +1,728 @@
+Microsoft Windows [Version 10.0.26100.6584]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\System32>spark-shell
+25/09/12 12:29:32 WARN Shell: Did not find winutils.exe: java.io.FileNotFoundException: Hadoop bin directory does not exist: C:\hadoopsetup\hadoop-3.2.4\bin -see https://wiki.apache.org/hadoop/WindowsProblems
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Spark context Web UI available at http://luckysteven:4040
+Spark context available as 'sc' (master = local[*], app id = local-1757660378723).
+Spark session available as 'spark'.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 3.5.6
+      /_/
+
+Using Scala version 2.12.18 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_441)
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val l=list.fill(3)("sdff")
+l.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+<console>:22: error: not found: value list
+       val l=list.fill(3)("sdff")
+             ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val l=List.fill(3)("sdff")
+l.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+sdff
+sdff
+sdff
+l: List[String] = List(sdff, sdff, sdff)
+
+scala>
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var l="scala"::"df"::"sdf"::null
+l.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:23: error: value :: is not a member of Null
+var l="scala"::"df"::"sdf"::null
+                          ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var l="scala"::"df"::"sdf"::null
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:22: error: value :: is not a member of Null
+var l="scala"::"df"::"sdf"::null
+                          ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var l="scala"::"df"::"sdf"::nil
+l.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:23: error: not found: value nil
+var l="scala"::"df"::"sdf"::nil
+                            ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var l="scala"::"df"::"sdf"::Nil
+l.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+scala
+df
+sdf
+l: List[String] = List(scala, df, sdf)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var l1=l:+"dsd"
+l1.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+scala
+df
+sdf
+dsd
+l1: List[String] = List(scala, df, sdf, dsd)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var l1=l:+"dsd"
+l1.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+scala
+df
+sdf
+dsd
+l1: List[String] = List(scala, df, sdf, dsd)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var l1=l+:"dsd"
+l1.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+List(scala, df, sdf)
+d
+s
+d
+l1: scala.collection.immutable.IndexedSeq[Any] = Vector(List(scala, df, sdf), d, s, d)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var l1="dsd"+:l
+l1.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+dsd
+scala
+df
+sdf
+l1: List[String] = List(dsd, scala, df, sdf)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a="1"::"2"::"3"::Nil
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+1
+2
+3
+a: List[String] = List(1, 2, 3)
+
+scala> val l2="100"+:a
+l2: List[String] = List(100, 1, 2, 3)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val l2="100"+:a
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+1
+2
+3
+l2: List[String] = List(100, 1, 2, 3)
+
+scala> val b=a:::l2
+b: List[String] = List(1, 2, 3, 100, 1, 2, 3)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val b=a:::l2
+
+// Exiting paste mode, now interpreting.
+
+b: List[String] = List(1, 2, 3, 100, 1, 2, 3)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=1::2::3::Nil
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+1
+2
+3
+a: List[Int] = List(1, 2, 3)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val l2="100"+:a
+l2.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+100
+1
+2
+3
+l2: List[Any] = List(100, 1, 2, 3)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val c=a:::l2
+
+// Exiting paste mode, now interpreting.
+
+c: List[Any] = List(1, 2, 3, 100, 1, 2, 3)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=list(1,2,3,4,5)
+a.foreach(a)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:23: error: not found: value list
+val a=list(1,2,3,4,5)
+      ^
+
+scala> :paste\
+No such command ':paste\'.  Type :help for help.
+
+scala> :paste\
+No such command ':paste\'.  Type :help for help.
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=List(1,2,3,4,5)
+a.foreach(a)
+
+// Exiting paste mode, now interpreting.
+
+java.lang.IndexOutOfBoundsException: 5
+  at scala.collection.LinearSeqOptimized.apply(LinearSeqOptimized.scala:67)
+  at scala.collection.LinearSeqOptimized.apply$(LinearSeqOptimized.scala:65)
+  at scala.collection.immutable.List.apply(List.scala:91)
+  at scala.collection.immutable.List.apply(List.scala:91)
+  at scala.collection.immutable.List.foreach(List.scala:431)
+  ... 55 elided
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=List(1,2,3,4,5)
+a.foreach(a)
+
+// Exiting paste mode, now interpreting.
+
+java.lang.IndexOutOfBoundsException: 5
+  at scala.collection.LinearSeqOptimized.apply(LinearSeqOptimized.scala:67)
+  at scala.collection.LinearSeqOptimized.apply$(LinearSeqOptimized.scala:65)
+  at scala.collection.immutable.List.apply(List.scala:91)
+  at scala.collection.immutable.List.apply(List.scala:91)
+  at scala.collection.immutable.List.foreach(List.scala:431)
+  ... 55 elided
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a=List(1,2,3,4,5)
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+1
+2
+3
+4
+5
+a: List[Int] = List(1, 2, 3, 4, 5)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val b=a.head
+println(b)
+
+// Exiting paste mode, now interpreting.
+
+1
+b: Int = 1
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val c=a.tail
+println(c)
+
+// Exiting paste mode, now interpreting.
+
+List(2, 3, 4, 5)
+c: List[Int] = List(2, 3, 4, 5)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=Vector(1,2,3,4)
+
+// Exiting paste mode, now interpreting.
+
+a: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=Vector(1,2,3,4)
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+1
+2
+3
+4
+a: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
+
+scala> a++
+<console>:24: error: missing argument list for method ++ in class Vector
+Unapplied methods are only converted to functions when a function type is expected.
+You can make this conversion explicit by writing `++ _` or `++(_)(_)` instead of `++`.
+       a++
+        ^
+
+scala> a++_
+<console>:24: error: missing parameter type for expanded function ((x$1: <error>) => a.$plus$plus(x$1))
+       a++_
+          ^
+
+scala> var a=Vector("sdf","sdf","sdfds")
+a: scala.collection.immutable.Vector[String] = Vector(sdf, sdf, sdfds)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=Vector("sdf","sdf","sdfds")
+a.foreach(a)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:26: error: type mismatch;
+ found   : scala.collection.immutable.Vector[String]
+ required: String => ?
+a.foreach(a)
+          ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=Vector("sdf","sdf","sdfds")
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+sdf
+sdf
+sdfds
+a: scala.collection.immutable.Vector[String] = Vector(sdf, sdf, sdfds)
+
+scala> var b=Vector("szefe","ff","ZERg")
+b: scala.collection.immutable.Vector[String] = Vector(szefe, ff, ZERg)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var b=Vector("szefe","ff","ZERg")
+b.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+szefe
+ff
+ZERg
+b: scala.collection.immutable.Vector[String] = Vector(szefe, ff, ZERg)
+
+scala> a++b
+res25: scala.collection.immutable.Vector[String] = Vector(sdf, sdf, sdfds, szefe, ff, ZERg)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+a++b
+
+// Exiting paste mode, now interpreting.
+
+res26: scala.collection.immutable.Vector[String] = Vector(sdf, sdf, sdfds, szefe, ff, ZERg)
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=spark.sparkContext.parallelize(Seq(("a",1)("s",3)))
+a.foreach(a)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:23: error: (String, Int) does not take parameters
+Error occurred in an application involving default arguments.
+var a=spark.sparkContext.parallelize(Seq(("a",1)("s",3)))
+                                                ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=spark.sparkContext.parallelize(Seq(("a",1)("s",3)))
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:23: error: (String, Int) does not take parameters
+Error occurred in an application involving default arguments.
+var a=spark.sparkContext.parallelize(Seq(("a",1)("s",3)))
+                                                ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=spark.sparkContext.parallelize(Seq(("a",1)("s",3)))
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:23: error: (String, Int) does not take parameters
+Error occurred in an application involving default arguments.
+var a=spark.sparkContext.parallelize(Seq(("a",1)("s",3)))
+                                                ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a=spark.sparkContext.parallelize(Seq(("a",1)("s",3)))
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:23: error: (String, Int) does not take parameters
+Error occurred in an application involving default arguments.
+var a=spark.sparkContext.parallelize(Seq(("a",1)("s",3)))
+                                                ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a = spark.sparkContext.parallelize(Seq(("a", 1), ("s", 3)))
+a.foreach(println)
+
+// Exiting paste mode, now interpreting.
+
+(a,1)e 0:>                                                        (0 + 12) / 12]
+(s,3)
+a: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[0] at parallelize at <pastie>:23
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\Here?s a set of 10 multiple-choice.txt")
+a.collect()
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:1: error: invalid escape character
+var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                        ^
+<pastie>:1: error: invalid escape character
+var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                              ^
+<pastie>:1: error: invalid escape character
+var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                                      ^
+<pastie>:1: error: invalid escape character
+var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                                                ^
+
+scala> var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\Here?s a set of 10 multiple-choice.txt")
+<console>:1: error: invalid escape character
+       var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                               ^
+<console>:1: error: invalid escape character
+       var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                                     ^
+<console>:1: error: invalid escape character
+       var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                                             ^
+<console>:1: error: invalid escape character
+       var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                                                       ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\Here?s a set of 10 multiple-choice.txt")
+a.collect()
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:1: error: invalid escape character
+var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                        ^
+<pastie>:1: error: invalid escape character
+var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                              ^
+<pastie>:1: error: invalid escape character
+var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                                      ^
+<pastie>:1: error: invalid escape character
+var a = spark.sparkContext.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                                                ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a = spark.sparkContext.textFile("C:/Users\Gayatri\Downloads\Here?s a set of 10 multiple-choice.txt")
+a.collect()
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:1: error: invalid escape character
+var a = spark.sparkContext.textFile("C:/Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                              ^
+<pastie>:1: error: invalid escape character
+var a = spark.sparkContext.textFile("C:/Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                                      ^
+<pastie>:1: error: invalid escape character
+var a = spark.sparkContext.textFile("C:/Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                                                ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a = spark.sparkContext.textFile("C:/Users/Gayatri/Downloads/Here?s a set of 10 multiple-choice.txt")
+a.collect()
+
+// Exiting paste mode, now interpreting.
+
+a: org.apache.spark.rdd.RDD[String] = C:/Users/Gayatri/Downloads/HereÆs a set of 10 multiple-choice.txt MapPartitionsRDD[2] at textFile at <pastie>:23
+res32: Array[String] = Array(HereÆs a set of 10 multiple-choice questions (MCQs) for each topic related to Ethical and Professional Issues in Information Security., "", ### Law and Ethics in Information Security, 1. What is the primary focus of laws related to information security?, "   - A) To promote the sale of technology", "   - B) To protect sensitive information and ensure data privacy", "   - C) To reduce operational costs for businesses", "   - D) To encourage competition among service providers  ", "   **Answer: B**", "", 2. Which ethical principle emphasizes the responsibility of information security professionals to protect cl...
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var b = a.flatMap(_.split(" ")
+b.collect(
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:2: error: ')' expected but '.' found.
+b.collect(
+ ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var b = a.flatMap(_.split(" ")
+b.collect()
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:2: error: ')' expected but '.' found.
+b.collect()
+ ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var b = a.flatMap(_.split(" "))
+b.collect()
+
+// Exiting paste mode, now interpreting.
+
+b: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[3] at flatMap at <pastie>:24
+res33: Array[String] = Array(HereÆs, a, set, of, 10, multiple-choice, questions, (MCQs), for, each, topic, related, to, Ethical, and, Professional, Issues, in, Information, Security., "", ###, Law, and, Ethics, in, Information, Security, 1., What, is, the, primary, focus, of, laws, related, to, information, security?, "", "", "", -, A), To, promote, the, sale, of, technology, "", "", "", -, B), To, protect, sensitive, information, and, ensure, data, privacy, "", "", "", -, C), To, reduce, operational, costs, for, businesses, "", "", "", -, D), To, encourage, competition, among, service, providers, "", "", "", **Answer:, B**, "", 2., Which, ethical, principle, emphasizes, the, responsibility, of, informa...
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a = spark.range(20).toDF().rdd
+a.collect()
+
+// Exiting paste mode, now interpreting.
+
+a: org.apache.spark.rdd.RDD[org.apache.spark.sql.Row] = MapPartitionsRDD[9] at rdd at <pastie>:23
+res34: Array[org.apache.spark.sql.Row] = Array([0], [1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12], [13], [14], [15], [16], [17], [18], [19])
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val a = sc.textFile("C:\Users\Gayatri\Downloads\Here?s a set of 10 multiple-choice.txt")
+val b = a.map(r=>.r.split(" ")
+b.collect()
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:1: error: invalid escape character
+val a = sc.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                        ^
+<pastie>:1: error: invalid escape character
+val a = sc.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                              ^
+<pastie>:1: error: invalid escape character
+val a = sc.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                      ^
+<pastie>:1: error: invalid escape character
+val a = sc.textFile("C:\Users\Gayatri\Downloads\HereÆs a set of 10 multiple-choice.txt")
+                                                ^
+<pastie>:2: error: illegal start of simple expression
+val b = a.map(r=>.r.split(" ")
+                 ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val b = a.map(r=>.r.split(" ")
+b.collect()
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:1: error: illegal start of simple expression
+val b = a.map(r=>.r.split(" ")
+                 ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+var a = spark.sparkContext.textFile("C:/Users/Gayatri/Downloads/Here?s a set of 10 multiple-choice.txt")
+a.collect()
+
+// Exiting paste mode, now interpreting.
+
+a: org.apache.spark.rdd.RDD[String] = C:/Users/Gayatri/Downloads/Here?s a set of 10 multiple-choice.txt MapPartitionsRDD[11] at textFile at <pastie>:23
+res35: Array[String] = Array(HereÆs a set of 10 multiple-choice questions (MCQs) for each topic related to Ethical and Professional Issues in Information Security., "", ### Law and Ethics in Information Security, 1. What is the primary focus of laws related to information security?, "   - A) To promote the sale of technology", "   - B) To protect sensitive information and ensure data privacy", "   - C) To reduce operational costs for businesses", "   - D) To encourage competition among service providers  ", "   **Answer: B**", "", 2. Which ethical principle emphasizes the responsibility of information security professionals to protect c...
+
+scala> val b = a.map.(r=>r.split(" "))
+<console>:1: error: identifier expected but '(' found.
+       val b = a.map.(r=>r.split(" "))
+                     ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val b = a.map.(r=>r.split(" "))
+b.collect(
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:1: error: identifier expected but '(' found.
+val b = a.map.(r=>r.split(" "))
+              ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val b = a.map.(r=>r.split(" "))
+b.collect()
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:1: error: identifier expected but '(' found.
+val b = a.map.(r=>r.split(" "))
+              ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val b = a.map(r=>r.split(" "))
+b.collect()
+
+// Exiting paste mode, now interpreting.
+
+b: org.apache.spark.rdd.RDD[Array[String]] = MapPartitionsRDD[12] at map at <pastie>:24
+res36: Array[Array[String]] = Array(Array(HereÆs, a, set, of, 10, multiple-choice, questions, (MCQs), for, each, topic, related, to, Ethical, and, Professional, Issues, in, Information, Security.), Array(""), Array(###, Law, and, Ethics, in, Information, Security), Array(1., What, is, the, primary, focus, of, laws, related, to, information, security?), Array("", "", "", -, A), To, promote, the, sale, of, technology), Array("", "", "", -, B), To, protect, sensitive, information, and, ensure, data, privacy), Array("", "", "", -, C), To, reduce, operational, costs, for, businesses), Array("", "", "", -, D), To, encourage, competition, among, service, providers), Array("", "", "", **Answer:, B**), Array...
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val b = a.Flatmap(r=>r.split(" "))
+b.collect()
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:24: error: value Flatmap is not a member of org.apache.spark.rdd.RDD[String]
+val b = a.Flatmap(r=>r.split(" "))
+          ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val b = a.FlatMap(r=>r.split(" "))
+b.collect()
+
+// Exiting paste mode, now interpreting.
+
+<pastie>:24: error: value FlatMap is not a member of org.apache.spark.rdd.RDD[String]
+val b = a.FlatMap(r=>r.split(" "))
+          ^
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val b = a.flatMap(r=>r.split(" "))
+b.collect()
+
+// Exiting paste mode, now interpreting.
+
+b: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[13] at flatMap at <pastie>:24
+res39: Array[String] = Array(HereÆs, a, set, of, 10, multiple-choice, questions, (MCQs), for, each, topic, related, to, Ethical, and, Professional, Issues, in, Information, Security., "", ###, Law, and, Ethics, in, Information, Security, 1., What, is, the, primary, focus, of, laws, related, to, information, security?, "", "", "", -, A), To, promote, the, sale, of, technology, "", "", "", -, B), To, protect, sensitive, information, and, ensure, data, privacy, "", "", "", -, C), To, reduce, operational, costs, for, businesses, "", "", "", -, D), To, encourage, competition, among, service, providers, "", "", "", **Answer:, B**, "", 2., Which, ethical, principle, emphasizes, the, responsibility, of, inform...
+
+scala>
