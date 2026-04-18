@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C01–C05 Complete Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#07080f; --surf:#0d0f1c; --surf2:#121525; --border:rgba(255,255,255,0.07);
+  --c01:#f472b6; --c02:#a78bfa; --c03:#38bdf8; --c04:#fb923c; --c05:#34d399;
+  --text:#e2e8f0; --muted:#64748b; --sub:#94a3b8;
+  --kw:#c084fc; --str:#86efac; --fn:#60a5fa; --num:#fbbf24; --cm:#475569; --ok:#4ade80; --err:#f87171;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);display:flex;}
+
+/* SIDEBAR */
+.sidebar{width:230px;min-width:230px;height:100vh;position:sticky;top:0;overflow-y:auto;background:var(--surf);border-right:1px solid var(--border);padding:20px 0;scrollbar-width:thin;scrollbar-color:var(--border) transparent;flex-shrink:0;}
+.sidebar::-webkit-scrollbar{width:4px;}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+.sb-logo{padding:0 18px 16px;border-bottom:1px solid var(--border);margin-bottom:12px;}
+.sb-logo h2{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--text);}
+.sb-logo p{font-size:10px;color:var(--muted);margin-top:3px;}
+.sb-co{margin-bottom:4px;}
+.sb-co-label{display:flex;align-items:center;gap:8px;padding:8px 18px;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border-radius:0;}
+.sb-co-label .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.sb-links{padding:0;}
+.sb-link{display:block;padding:6px 18px 6px 30px;font-size:12px;color:var(--muted);text-decoration:none;border-left:2px solid transparent;transition:all 0.15s;border-radius:0;}
+.sb-link:hover{color:var(--text);background:rgba(255,255,255,0.03);}
+.sb-link.active{color:var(--text);border-left-color:currentColor;background:rgba(255,255,255,0.04);}
+
+/* MAIN */
+.main{flex:1;overflow-y:auto;padding:36px 48px;max-width:820px;}
+
+/* SECTION HEADERS */
+.co-banner{border-radius:14px;padding:28px 32px;margin-bottom:32px;margin-top:48px;position:relative;overflow:hidden;}
+.co-banner:first-of-type{margin-top:0;}
+.co-banner::before{content:attr(data-label);position:absolute;right:-10px;top:-20px;font-family:'Syne',sans-serif;font-size:110px;font-weight:800;opacity:0.04;pointer-events:none;}
+.co-banner h2{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;line-height:1.2;}
+.co-banner p{font-size:14px;margin-top:8px;opacity:0.75;line-height:1.6;}
+.co-banner .co-tag{display:inline-block;border:1px solid;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:700;letter-spacing:0.06em;margin-bottom:12px;}
+
+.co1-b{background:linear-gradient(135deg,rgba(244,114,182,0.1),rgba(244,114,182,0.04));border:1px solid rgba(244,114,182,0.2);}
+.co2-b{background:linear-gradient(135deg,rgba(167,139,250,0.1),rgba(167,139,250,0.04));border:1px solid rgba(167,139,250,0.2);}
+.co3-b{background:linear-gradient(135deg,rgba(56,189,248,0.1),rgba(56,189,248,0.04));border:1px solid rgba(56,189,248,0.2);}
+.co4-b{background:linear-gradient(135deg,rgba(251,146,60,0.1),rgba(251,146,60,0.04));border:1px solid rgba(251,146,60,0.2);}
+.co5-b{background:linear-gradient(135deg,rgba(52,211,153,0.1),rgba(52,211,153,0.04));border:1px solid rgba(52,211,153,0.2);}
+
+/* SECTION TITLE */
+.stitle{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin:32px 0 8px;display:flex;align-items:center;gap:10px;}
+.stitle .ln{flex:1;height:1px;background:var(--border);}
+.ssub{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6;}
+
+/* DEFINITION */
+.def{border-radius:10px;padding:18px 22px;margin:14px 0;border-left:4px solid;}
+.def-title{font-size:15px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.def-d{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#07080f;flex-shrink:0;}
+.def-body{font-size:14px;color:var(--sub);line-height:1.85;}
+.def-body strong{color:var(--text);}
+.def-body code{background:rgba(255,255,255,0.07);border-radius:4px;padding:2px 7px;font-family:'JetBrains Mono',monospace;font-size:12px;}
+
+/* CODE */
+.cw{background:#040509;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:14px 0;}
+.ch{display:flex;justify-content:space-between;align-items:center;padding:8px 16px;background:rgba(255,255,255,0.025);border-bottom:1px solid var(--border);}
+.cl{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;}
+.cr{font-size:11px;color:var(--muted);}
+pre{padding:18px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;overflow-x:auto;}
+.kw{color:#c084fc;font-weight:600;}.str{color:#86efac;}.fn{color:#60a5fa;}.num{color:#fbbf24;}
+.cm{color:#475569;font-style:italic;}.ok{color:#4ade80;}.err{color:#f87171;}
+.out{color:#64748b;}.p{color:#a78bfa;font-weight:600;}
+
+/* NOTES */
+.note{border-radius:8px;padding:14px 18px;margin:14px 0;font-size:13px;line-height:1.8;border:1px solid;}
+.n-pink{background:rgba(244,114,182,0.07);border-color:rgba(244,114,182,0.2);color:#f9a8d4;}
+.n-pink strong{color:var(--c01);}
+.n-purple{background:rgba(167,139,250,0.07);border-color:rgba(167,139,250,0.2);color:#c4b5fd;}
+.n-purple strong{color:var(--c02);}
+.n-blue{background:rgba(56,189,248,0.07);border-color:rgba(56,189,248,0.2);color:#7dd3fc;}
+.n-blue strong{color:var(--c03);}
+.n-orange{background:rgba(251,146,60,0.07);border-color:rgba(251,146,60,0.2);color:#fdba74;}
+.n-orange strong{color:var(--c04);}
+.n-green{background:rgba(52,211,153,0.07);border-color:rgba(52,211,153,0.2);color:#6ee7b7;}
+.n-green strong{color:var(--c05);}
+.n-err{background:rgba(248,113,113,0.07);border-color:rgba(248,113,113,0.2);color:#fca5a5;}
+.n-err strong{color:var(--err);}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0;border-radius:8px;overflow:hidden;}
+.tbl th{padding:10px 14px;text-align:left;font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;}
+.tbl td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--sub);vertical-align:top;}
+.tbl td:first-child{font-family:'JetBrains Mono',monospace;font-size:12px;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl td strong{color:var(--text);}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.card{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:18px 20px;}
+.card h3{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:10px;}
+
+/* MEM */
+.mem{background:var(--surf2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;margin:14px 0;}
+.mem h4{font-size:12px;font-weight:700;letter-spacing:0.05em;margin-bottom:12px;text-transform:uppercase;}
+.mr{display:flex;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.mr:last-child{border-bottom:none;}
+.mk{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;min-width:145px;flex-shrink:0;}
+.mv{font-size:13px;color:var(--sub);line-height:1.6;}
+.mv strong{color:var(--text);}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:16px 0;}
+.fb{border-radius:8px;padding:10px 16px;font-size:13px;font-weight:600;border:1px solid;text-align:center;}
+.fb p{font-size:10px;font-weight:400;opacity:0.7;margin-top:3px;}
+.fa{color:var(--muted);font-size:18px;}
+
+/* DIVIDER */
+.div{height:1px;background:var(--border);margin:40px 0;}
+</style>
+</head>
+<body>
+
+<!-- ══════ SIDEBAR ══════ -->
+<nav class="sidebar">
+  <div class="sb-logo">
+    <h2>ETP Study Guide</h2>
+    <p>C01 → C05 · 18 April 2026</p>
+  </div>
+
+  <div class="sb-co">
+    <div class="sb-co-label" style="color:var(--c01)"><span class="dot" style="background:var(--c01)"></span>C01 — Spark vs Hadoop</div>
+    <div class="sb-links">
+      <a class="sb-link" href="#c01-what" style="color:var(--c01)">What is Hadoop?</a>
+      <a class="sb-link" href="#c01-what-spark" style="color:var(--c01)">What is Spark?</a>
+      <a class="sb-link" href="#c01-diff" style="color:var(--c01)">Differences Table</a>
+      <a class="sb-link" href="#c01-arch" style="color:var(--c01)">Spark Architecture</a>
+    </div>
+  </div>
+
+  <div class="sb-co">
+    <div class="sb-co-label" style="color:var(--c02)"><span class="dot" style="background:var(--c02)"></span>C02 — Scala Language</div>
+    <div class="sb-links">
+      <a class="sb-link" href="#c02-def" style="color:var(--c02)">What is Scala?</a>
+      <a class="sb-link" href="#c02-valvar" style="color:var(--c02)">val vs var</a>
+      <a class="sb-link" href="#c02-types" style="color:var(--c02)">Data Types</a>
+      <a class="sb-link" href="#c02-ops" style="color:var(--c02)">Operators</a>
+      <a class="sb-link" href="#c02-control" style="color:var(--c02)">Control Flow</a>
+      <a class="sb-link" href="#c02-strings" style="color:var(--c02)">Strings</a>
+      <a class="sb-link" href="#c02-array" style="color:var(--c02)">Array & ArrayBuffer</a>
+      <a class="sb-link" href="#c02-list" style="color:var(--c02)">List, Set, Map, Seq</a>
+    </div>
+  </div>
+
+  <div class="sb-co">
+    <div class="sb-co-label" style="color:var(--c03)"><span class="dot" style="background:var(--c03)"></span>C03 — RDD In-Memory</div>
+    <div class="sb-links">
+      <a class="sb-link" href="#c03-rdd" style="color:var(--c03)">What is RDD?</a>
+      <a class="sb-link" href="#c03-create" style="color:var(--c03)">Creating RDDs</a>
+      <a class="sb-link" href="#c03-transform" style="color:var(--c03)">Transformations</a>
+      <a class="sb-link" href="#c03-actions" style="color:var(--c03)">Actions</a>
+      <a class="sb-link" href="#c03-wordcount" style="color:var(--c03)">Word Count</a>
+    </div>
+  </div>
+
+  <div class="sb-co">
+    <div class="sb-co-label" style="color:var(--c04)"><span class="dot" style="background:var(--c04)"></span>C04 — MLlib</div>
+    <div class="sb-links">
+      <a class="sb-link" href="#c04-def" style="color:var(--c04)">What is MLlib?</a>
+      <a class="sb-link" href="#c04-lr" style="color:var(--c04)">Linear Regression</a>
+      <a class="sb-link" href="#c04-kmeans" style="color:var(--c04)">K-Means</a>
+    </div>
+  </div>
+
+  <div class="sb-co">
+    <div class="sb-co-label" style="color:var(--c05)"><span class="dot" style="background:var(--c05)"></span>C05 — DataFrame</div>
+    <div class="sb-links">
+      <a class="sb-link" href="#c05-def" style="color:var(--c05)">What is DataFrame?</a>
+      <a class="sb-link" href="#c05-create" style="color:var(--c05)">Creating DataFrames</a>
+      <a class="sb-link" href="#c05-ops" style="color:var(--c05)">DF Operations</a>
+      <a class="sb-link" href="#c05-sql" style="color:var(--c05)">Spark SQL</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════ MAIN CONTENT ══════ -->
+<main class="main">
+
+<!-- ═══════════════════════ C01 ═══════════════════════ -->
+<div class="co-banner co1-b" data-label="C01">
+  <span class="co-tag" style="border-color:var(--c01);color:var(--c01);">C01</span>
+  <h2 style="color:var(--c01)">Apache Spark vs Hadoop</h2>
+  <p>Analyze the similarities and differences between Spark and Hadoop</p>
+</div>
+
+<div id="c01-what"></div>
+<div class="stitle" style="color:var(--c01)">What is Hadoop? <div class="ln"></div></div>
+
+<div class="def" style="border-color:var(--c01);background:rgba(244,114,182,0.06);">
+  <div class="def-title" style="color:var(--c01)"><span class="def-d" style="background:var(--c01)">D</span>Apache Hadoop</div>
+  <div class="def-body"><strong>Hadoop</strong> is an open-source framework for storing and processing large datasets in a distributed manner across clusters of computers using simple programming models. It has two core parts:<br><br>
+  <strong>HDFS</strong> (Hadoop Distributed File System) — stores data across multiple machines in blocks (default 128MB each).<br>
+  <strong>MapReduce</strong> — the processing engine that reads from disk → processes → writes back to disk at every single step.<br><br>
+  This disk-based processing makes Hadoop <strong>slow for iterative tasks</strong> like machine learning algorithms that need to go over the same data many times.</div>
+</div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c01)">Concept</span><span class="cr">Hadoop MapReduce flow for a 3-step job</span></div>
+  <pre><span class="cm">// HADOOP — reads/writes DISK at every step</span>
+Step 1: HDFS → <span class="fn">Map</span> → <span class="err">DISK WRITE</span> → Shuffle → <span class="err">DISK WRITE</span> → <span class="fn">Reduce</span> → HDFS
+Step 2: HDFS → <span class="fn">Map</span> → <span class="err">DISK WRITE</span> → Shuffle → <span class="err">DISK WRITE</span> → <span class="fn">Reduce</span> → HDFS
+Step 3: HDFS → <span class="fn">Map</span> → <span class="err">DISK WRITE</span> → Shuffle → <span class="err">DISK WRITE</span> → <span class="fn">Reduce</span> → HDFS
+
+<span class="err">Result: 3 steps = 6 disk operations. Disk is 1000x slower than RAM!</span>
+
+<span class="cm">// ML with 100 iterations on Hadoop:</span>
+<span class="err">100 iterations × 6 disk ops = 600 disk operations. Extremely slow.</span></pre>
+</div>
+
+<div id="c01-what-spark"></div>
+<div class="stitle" style="color:var(--c01)">What is Apache Spark? <div class="ln"></div></div>
+
+<div class="def" style="border-color:var(--c01);background:rgba(244,114,182,0.06);">
+  <div class="def-title" style="color:var(--c01)"><span class="def-d" style="background:var(--c01)">D</span>Apache Spark</div>
+  <div class="def-body"><strong>Apache Spark</strong> is an open-source, <strong>in-memory distributed computing framework</strong> that processes data in RAM instead of reading/writing to disk between steps. It is built on the concept of <strong>RDDs</strong> (Resilient Distributed Datasets) and is 100x faster than Hadoop MapReduce for in-memory operations and 10x faster on disk.<br><br>
+  Spark does <strong>NOT replace HDFS</strong> — it replaces only the MapReduce computation engine. Spark uses HDFS for storage but processes data in memory.</div>
+</div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c01)">Concept</span><span class="cr">Spark in-memory flow</span></div>
+  <pre><span class="cm">// SPARK — reads disk ONCE, all processing in RAM</span>
+Load: HDFS → <span class="ok">RDD in RAM</span> <span class="cm">(one-time disk read)</span>
+
+<span class="ok">Step 1: RAM → transform → RAM</span>
+<span class="ok">Step 2: RAM → transform → RAM</span>
+<span class="ok">Step 3: RAM → transform → RAM</span>
+
+Save: RAM → HDFS <span class="cm">(one-time disk write)</span>
+
+<span class="ok">Result: 3 steps = 2 disk ops. Everything else in memory!</span>
+<span class="ok">ML with 100 iterations = only 2 disk ops (1 read + 1 save).</span></pre>
+</div>
+
+<div id="c01-diff"></div>
+<div class="stitle" style="color:var(--c01)">Differences Table <div class="ln"></div></div>
+<table class="tbl">
+  <tr style="background:rgba(244,114,182,0.1)"><th style="color:var(--c01)">Feature</th><th style="color:var(--c01)">Hadoop MapReduce</th><th style="color:var(--c01)">Apache Spark</th></tr>
+  <tr><td>Processing</td><td><strong>Disk-based</strong> — reads/writes disk every step</td><td><strong>In-Memory</strong> — processes data in RAM</td></tr>
+  <tr><td>Speed</td><td>Baseline (1x)</td><td><strong>100x faster</strong> (memory), 10x (disk)</td></tr>
+  <tr><td>Real-time</td><td>❌ Not supported</td><td>✅ Spark Streaming</td></tr>
+  <tr><td>Machine Learning</td><td>Mahout (limited, slow)</td><td><strong>MLlib</strong> (built-in, fast)</td></tr>
+  <tr><td>Graph Processing</td><td>❌ No</td><td>✅ GraphX</td></tr>
+  <tr><td>Languages</td><td>Java (primary)</td><td>Python, Scala, Java, R</td></tr>
+  <tr><td>SQL Support</td><td>Hive (external)</td><td><strong>Spark SQL</strong> (built-in)</td></tr>
+  <tr><td>Fault Tolerance</td><td>Data replication (3 copies)</td><td><strong>RDD Lineage</strong> (recompute)</td></tr>
+  <tr><td>Iterative Jobs</td><td>Very slow (disk each time)</td><td>Excellent (cache in RAM)</td></tr>
+  <tr><td>Storage</td><td>HDFS (own storage)</td><td>No own storage — uses HDFS/S3</td></tr>
+</table>
+
+<div class="note n-pink"><strong>Similarities (things they share):</strong> Both are distributed computing frameworks · Both run on commodity hardware · Both can use HDFS for storage · Both are Apache open-source projects · Both are horizontally scalable (add more machines) · Both are fault tolerant.</div>
+
+<div id="c01-arch"></div>
+<div class="stitle" style="color:var(--c01)">Spark Architecture <div class="ln"></div></div>
+
+<div class="flow">
+  <div class="fb" style="background:rgba(244,114,182,0.1);border-color:rgba(244,114,182,0.3);color:var(--c01)">Driver Program<p>Your Python/Scala script</p></div>
+  <span class="fa">↓</span>
+  <div class="fb" style="background:rgba(244,114,182,0.1);border-color:rgba(244,114,182,0.3);color:var(--c01)">SparkContext / SparkSession<p>Entry point, builds DAG</p></div>
+  <span class="fa">↓</span>
+  <div class="fb" style="background:rgba(167,139,250,0.1);border-color:rgba(167,139,250,0.3);color:var(--c02)">Cluster Manager<p>YARN / Mesos / Standalone</p></div>
+  <span class="fa">↓</span>
+  <div class="fb" style="background:rgba(56,189,248,0.1);border-color:rgba(56,189,248,0.3);color:var(--c03)">Worker Node 1<p>Executor + Tasks in RAM</p></div>
+  <span class="fa">+</span>
+  <div class="fb" style="background:rgba(56,189,248,0.1);border-color:rgba(56,189,248,0.3);color:var(--c03)">Worker Node 2<p>Executor + Tasks in RAM</p></div>
+</div>
+
+<div class="mem">
+  <h4 style="color:var(--c01)">Key Terms — Viva Favorites</h4>
+  <div class="mr"><span class="mk" style="color:var(--c01)">Driver</span><span class="mv"><strong>Brain of Spark app.</strong> Contains main(). Creates SparkContext. Schedules jobs.</span></div>
+  <div class="mr"><span class="mk" style="color:var(--c01)">Executor</span><span class="mv"><strong>JVM process on Worker node.</strong> Runs Tasks. Caches RDD partitions in RAM.</span></div>
+  <div class="mr"><span class="mk" style="color:var(--c01)">Task</span><span class="mv"><strong>Smallest unit of work.</strong> Processes 1 partition of an RDD.</span></div>
+  <div class="mr"><span class="mk" style="color:var(--c01)">Stage</span><span class="mv">Set of Tasks that run without a shuffle between them.</span></div>
+  <div class="mr"><span class="mk" style="color:var(--c01)">Job</span><span class="mv">Triggered by 1 Action. Contains 1 or more Stages.</span></div>
+  <div class="mr"><span class="mk" style="color:var(--c01)">Partition</span><span class="mv">One chunk of RDD data. 1 Partition → 1 Task → 1 Executor.</span></div>
+</div>
+
+<div class="div"></div>
+
+<!-- ═══════════════════════ C02 ═══════════════════════ -->
+<div class="co-banner co2-b" data-label="C02">
+  <span class="co-tag" style="border-color:var(--c02);color:var(--c02);">C02</span>
+  <h2 style="color:var(--c02)">Scala Language for Apache Spark</h2>
+  <p>Features and functions of Scala — from cluster 1.txt and cluster 2.txt</p>
+</div>
+
+<div id="c02-def"></div>
+<div class="def" style="border-color:var(--c02);background:rgba(167,139,250,0.06);">
+  <div class="def-title" style="color:var(--c02)"><span class="def-d" style="background:var(--c02)">D</span>Scala Language</div>
+  <div class="def-body"><strong>Scala</strong> (Scalable Language) is a <strong>general-purpose, statically typed, object-oriented and functional programming language</strong> that runs on the JVM. Created by Martin Odersky in 2003. Apache Spark is written in Scala, making it the native language of Spark. Scala's concise syntax lets you write in 5 lines what Java needs 60 lines for.</div>
+</div>
+
+<div id="c02-valvar"></div>
+<div class="stitle" style="color:var(--c02)">val vs var <div class="ln"></div></div>
+
+<div class="g2">
+  <div class="def" style="border-color:var(--c02);background:rgba(167,139,250,0.06);margin:0;">
+    <div class="def-title" style="color:var(--c02)"><span class="def-d" style="background:var(--c02)">D</span>val — immutable</div>
+    <div class="def-body"><strong>val</strong> declares an immutable variable. Once assigned, value <strong>cannot change</strong>. Like <code>final</code> in Java. In Spark, RDDs are always <strong>val</strong> because RDDs are immutable by design.</div>
+  </div>
+  <div class="def" style="border-color:var(--c03);background:rgba(56,189,248,0.06);margin:0;">
+    <div class="def-title" style="color:var(--c03)"><span class="def-d" style="background:var(--c03)">D</span>var — mutable</div>
+    <div class="def-body"><strong>var</strong> declares a mutable variable. Value <strong>can be changed</strong> anytime. Like a normal variable in Java. Used when value needs to be updated (e.g., accumulators).</div>
+  </div>
+</div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c02)">Scala</span><span class="cr">cluster 1.txt — exact code</span></div>
+  <pre><span class="cm">// val — immutable, cannot be changed</span>
+<span class="p">scala&gt;</span> <span class="kw">val</span> a = <span class="num">23</span>
+<span class="ok">a: Int = 23</span>
+
+<span class="p">scala&gt;</span> <span class="kw">val</span> b = <span class="str">'a'</span>          <span class="cm">// Char — single quotes!</span>
+<span class="ok">b: Char = a</span>
+
+<span class="p">scala&gt;</span> a = <span class="num">20</span>               <span class="cm">// ERROR — val cannot change!</span>
+<span class="err">error: reassignment to val</span>
+
+<span class="cm">// var — mutable, can be changed</span>
+<span class="p">scala&gt;</span> <span class="kw">var</span> x = <span class="num">69</span>
+<span class="ok">x: Int = 69</span>
+
+<span class="p">scala&gt;</span> x = <span class="num">100</span>              <span class="cm">// OK — var can be reassigned</span>
+<span class="ok">x: Int = 100</span>
+
+<span class="cm">// :paste mode (multi-line input from your lab)</span>
+<span class="p">scala&gt;</span> :paste
+<span class="cm">// Entering paste mode (ctrl-D to finish)</span>
+<span class="kw">val</span> a = <span class="num">12</span>
+<span class="kw">val</span> b = a
+<span class="cm">// ctrl-D</span>
+<span class="ok">a: Int = 12
+b: Int = 12</span></pre>
+</div>
+
+<div id="c02-types"></div>
+<div class="stitle" style="color:var(--c02)">Data Types <div class="ln"></div></div>
+
+<div class="def" style="border-color:var(--c02);background:rgba(167,139,250,0.06);">
+  <div class="def-title" style="color:var(--c02)"><span class="def-d" style="background:var(--c02)">D</span>Data Type</div>
+  <div class="def-body">A <strong>data type</strong> defines the kind of value a variable holds and what operations can be done on it. Scala has <strong>type inference</strong> — it figures out the type automatically from the value, so you don't always need to write it. All Scala types start with a <strong>Capital letter</strong> (Int, not int).</div>
+</div>
+
+<table class="tbl">
+  <tr style="background:rgba(167,139,250,0.1)"><th style="color:var(--c02)">Type</th><th style="color:var(--c02)">Example from your lab</th><th style="color:var(--c02)">Notes</th></tr>
+  <tr><td>Int</td><td><code>val a = 23</code></td><td>Whole numbers, default for integers</td></tr>
+  <tr><td>Long</td><td><code>val a = 1L</code></td><td><strong>L suffix</strong> — used for GraphX VertexId!</td></tr>
+  <tr><td>Double</td><td><code>val a = 12d</code> or <code>12.0</code></td><td><strong>d suffix</strong> — decimal numbers, default</td></tr>
+  <tr><td>Float</td><td><code>val a = 12f</code></td><td><strong>f suffix</strong> — less precision than Double</td></tr>
+  <tr><td>Char</td><td><code>val b = 'a'</code></td><td>Single character, <strong>single quotes</strong></td></tr>
+  <tr><td>Boolean</td><td><code>val e = true</code></td><td>true or false only</td></tr>
+  <tr><td>String</td><td><code>val s = "hello"</code></td><td>Text, <strong>double quotes</strong></td></tr>
+  <tr><td>Hex</td><td><code>val hex = 0xC7</code></td><td>0x prefix → converts to Int (199)</td></tr>
+</table>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c02)">Scala</span><span class="cr">Type conversion methods — cluster 1.txt</span></div>
+  <pre><span class="kw">val</span> a = <span class="num">12</span>
+<span class="kw">val</span> b = a.<span class="fn">toFloat</span>    <span class="cm">// Int → Float  = 12.0</span>
+<span class="kw">val</span> c = a.<span class="fn">toDouble</span>   <span class="cm">// Int → Double = 12.0</span>
+<span class="kw">val</span> d = a.<span class="fn">toString</span>   <span class="cm">// Int → String = "12"</span>
+<span class="kw">val</span> e = <span class="str">"42"</span>.<span class="fn">toInt</span>   <span class="cm">// String → Int = 42</span>
+
+<span class="kw">val</span> hex = <span class="num">0xC7</span>        <span class="cm">// Hex literal = 199 in decimal</span>
+<span class="ok">hex: Int = 199</span>
+
+<span class="err">// ERROR from cluster 1.txt:</span>
+<span class="kw">val</span> old:<span class="err">char</span> = <span class="str">'a'</span>   <span class="cm">// ERROR — 'char' not found</span>
+<span class="kw">val</span> old:<span class="kw">Char</span> = <span class="str">'a'</span>   <span class="cm">// CORRECT — capital C!</span></pre>
+</div>
+
+<div id="c02-ops"></div>
+<div class="stitle" style="color:var(--c02)">Operators <div class="ln"></div></div>
+
+<div class="def" style="border-color:var(--c02);background:rgba(167,139,250,0.06);">
+  <div class="def-title" style="color:var(--c02)"><span class="def-d" style="background:var(--c02)">D</span>Operators</div>
+  <div class="def-body">Symbols that perform operations on values. In Scala, operators are actually <strong>methods</strong> — <code>a + b</code> is the same as <code>a.+(b)</code>. Scala supports arithmetic, relational, logical, and bitwise operators.</div>
+</div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c02)">Scala</span><span class="cr">Bitwise operators — cluster 1.txt exact code</span></div>
+  <pre><span class="cm">// Arithmetic</span>
+<span class="kw">val</span> a=<span class="num">12</span>; <span class="kw">val</span> b=<span class="num">2</span>
+a / b   <span class="cm">// 6   (integer division)</span>
+a * b   <span class="cm">// 24</span>
+a % b   <span class="cm">// 0   (modulus = remainder)</span>
+a >= b  <span class="cm">// true (comparison → Boolean)</span>
+
+<span class="cm">// Bitwise Assignment (from YOUR lab)</span>
+<span class="kw">var</span> x = <span class="num">69</span>; x &= <span class="num">22</span>    <span class="cm">// AND assign  → x = 4</span>
+<span class="kw">var</span> x = <span class="num">69</span>; x ^= <span class="num">22</span>    <span class="cm">// XOR assign  → x = 83</span>
+<span class="kw">var</span> a = <span class="num">69</span>; a |= <span class="num">22</span>    <span class="cm">// OR assign   → a = 87</span>
+<span class="kw">var</span> a = <span class="num">4</span>;  ~a          <span class="cm">// NOT         → -5  (~n = -(n+1))</span>
+<span class="kw">var</span> a=<span class="num">3</span>; <span class="kw">var</span> b=<span class="num">3</span>; a &lt;&lt; b <span class="cm">// Left shift → 24  (3 × 2³)</span>
+
+<span class="cm">// XOR TRICK — lowercase to uppercase!</span>
+<span class="kw">var</span> a = <span class="num">97</span>    <span class="cm">// ASCII of 'a' = 97</span>
+a ^= <span class="num">32</span>       <span class="cm">// 97 XOR 32 = 65 = ASCII of 'A'</span>
+<span class="ok">a: Int = 65</span>   <span class="cm">// Magic! Flips bit-5 → uppercase↔lowercase</span></pre>
+</div>
+
+<div id="c02-control"></div>
+<div class="stitle" style="color:var(--c02)">Control Flow <div class="ln"></div></div>
+
+<div class="def" style="border-color:var(--c02);background:rgba(167,139,250,0.06);">
+  <div class="def-title" style="color:var(--c02)"><span class="def-d" style="background:var(--c02)">D</span>Control Flow</div>
+  <div class="def-body">Statements that control the order in which code executes. In Scala, <strong>if-else is an expression</strong> — it returns a value, not just executes code. This makes Scala more functional than Java.</div>
+</div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c02)">Scala</span><span class="cr">cluster 1.txt — exact lab code</span></div>
+  <pre><span class="cm">// if-else (from your lab)</span>
+<span class="kw">val</span> marks = <span class="num">90</span>
+<span class="kw">if</span>(marks >= <span class="num">90</span>) {
+  <span class="fn">println</span>(<span class="str">"excellent performance"</span>)
+} <span class="kw">else</span> {
+  <span class="fn">println</span>(<span class="str">"false"</span>)
+}
+<span class="ok">excellent performance</span>
+
+<span class="cm">// Even or Odd (from your lab)</span>
+<span class="kw">val</span> marks = <span class="num">60</span>
+<span class="kw">if</span>(marks % <span class="num">2</span> == <span class="num">0</span>) <span class="fn">println</span>(<span class="str">"even"</span>)
+<span class="kw">else</span> <span class="fn">println</span>(<span class="str">"odd"</span>)
+<span class="ok">even</span>
+
+<span class="cm">// User Input — CORRECT spelling!</span>
+<span class="kw">import</span> scala.io.<span class="kw">StdIn</span>.<span class="fn">readLine</span>   <span class="cm">// capital S, capital I, capital L</span>
+<span class="kw">val</span> a = <span class="fn">readLine</span>()
+<span class="fn">print</span>(a)
+
+<span class="err">// ERROR from lab: import scala.io.Stdln.readLine ← lowercase n</span>
+
+<span class="cm">// For loop</span>
+<span class="kw">for</span>(i &lt;- <span class="num">1</span> <span class="kw">to</span> <span class="num">5</span>) <span class="fn">println</span>(i)
+<span class="ok">1  2  3  4  5</span></pre>
+</div>
+
+<div id="c02-strings"></div>
+<div class="stitle" style="color:var(--c02)">Strings <div class="ln"></div></div>
+
+<div class="def" style="border-color:var(--c02);background:rgba(167,139,250,0.06);">
+  <div class="def-title" style="color:var(--c02)"><span class="def-d" style="background:var(--c02)">D</span>String</div>
+  <div class="def-body">A <strong>String</strong> is an immutable sequence of characters enclosed in <strong>double quotes</strong>. Strings in Scala are Java Strings (JVM), so all Java String methods work. Strings have many built-in methods for text manipulation.</div>
+</div>
+
+<table class="tbl">
+  <tr style="background:rgba(167,139,250,0.1)"><th style="color:var(--c02)">Method</th><th style="color:var(--c02)">What it does</th><th style="color:var(--c02)">Example → Output</th></tr>
+  <tr><td>.length</td><td>Length of string</td><td><code>"hello".length</code> → <strong>5</strong></td></tr>
+  <tr><td>.toUpperCase</td><td>ALL CAPS</td><td><code>"hello".toUpperCase</code> → <strong>HELLO</strong></td></tr>
+  <tr><td>.toLowerCase</td><td>all small</td><td><code>"HELLO".toLowerCase</code> → <strong>hello</strong></td></tr>
+  <tr><td>.indexOf('w')</td><td>Index of character</td><td><code>"hello world".indexOf('w')</code> → <strong>6</strong></td></tr>
+  <tr><td>.split(" ")</td><td>Split into Array</td><td><code>"a b c".split(" ")</code> → <strong>Array(a,b,c)</strong></td></tr>
+  <tr><td>.contains("ll")</td><td>Check if exists</td><td><code>"hello".contains("ll")</code> → <strong>true</strong></td></tr>
+  <tr><td>.trim</td><td>Remove spaces</td><td><code>"  hi  ".trim</code> → <strong>"hi"</strong></td></tr>
+  <tr><td>.replace("l","x")</td><td>Replace chars</td><td><code>"hello".replace("l","x")</code> → <strong>hexxo</strong></td></tr>
+  <tr><td>.charAt(0)</td><td>Character at index</td><td><code>"hello".charAt(0)</code> → <strong>'h'</strong></td></tr>
+  <tr><td>.substring(1,3)</td><td>Slice of string</td><td><code>"hello".substring(1,3)</code> → <strong>"el"</strong></td></tr>
+  <tr><td>.toArray</td><td>Convert to Char Array</td><td><code>"scala".toArray</code> → <strong>Array(s,c,a,l,a)</strong></td></tr>
+  <tr><td>.toInt</td><td>Convert to Int</td><td><code>"42".toInt</code> → <strong>42</strong></td></tr>
+</table>
+
+<div class="note n-err"><strong>Errors from cluster 1.txt — memorise these:</strong><br>
+❌ <code>a.toupperCase</code> → error (lowercase t, uppercase C = wrong mix)<br>
+❌ <code>a.touppercase</code> → error (all lowercase)<br>
+✅ <code>a.toUpperCase</code> → correct (capital U AND capital C)</div>
+
+<div id="c02-array"></div>
+<div class="stitle" style="color:var(--c02)">Array & ArrayBuffer <div class="ln"></div></div>
+
+<div class="g2">
+  <div class="def" style="border-color:var(--c02);background:rgba(167,139,250,0.06);margin:0;">
+    <div class="def-title" style="color:var(--c02)"><span class="def-d" style="background:var(--c02)">D</span>Array</div>
+    <div class="def-body"><strong>Array</strong> is a <strong>fixed-size, mutable</strong> indexed collection. Fixed-size = cannot add/remove elements. Mutable = can change values. Backed by a Java array.</div>
+  </div>
+  <div class="def" style="border-color:var(--c05);background:rgba(52,211,153,0.06);margin:0;">
+    <div class="def-title" style="color:var(--c05)"><span class="def-d" style="background:var(--c05)">D</span>ArrayBuffer</div>
+    <div class="def-body"><strong>ArrayBuffer</strong> is a <strong>resizable, mutable</strong> array. Can add (+= ), remove (-=), remove by index, and clear. Must import <code>scala.collection.mutable.ArrayBuffer</code>.</div>
+  </div>
+</div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c02)">Scala</span><span class="cr">cluster 2.txt — exact lab code</span></div>
+  <pre><span class="cm">// ARRAY — creation methods</span>
+<span class="kw">val</span> a = Array(<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>)              <span class="cm">// direct</span>
+<span class="kw">val</span> a = Array.<span class="fn">range</span>(<span class="num">0</span>, <span class="num">10</span>)           <span class="cm">// 0,1,...,9</span>
+<span class="kw">val</span> a = Array.<span class="fn">fill</span>(<span class="num">3</span>)(<span class="str">"scala"</span>)       <span class="cm">// [scala,scala,scala]</span>
+<span class="kw">val</span> a = <span class="str">"scala"</span>.<span class="fn">toArray</span>              <span class="cm">// [s,c,a,l,a]</span>
+<span class="kw">val</span> a = <span class="kw">new</span> Array[<span class="kw">Int</span>](<span class="num">10</span>)           <span class="cm">// 10 zeros</span>
+
+<span class="cm">// ARRAY — operations (from cluster 2.txt)</span>
+<span class="kw">val</span> arr = Array(<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>,<span class="num">5</span>,<span class="num">6</span>,<span class="num">7</span>,<span class="num">8</span>,<span class="num">9</span>,<span class="num">10</span>)
+arr.<span class="fn">filter</span>(_ % <span class="num">2</span> == <span class="num">0</span>)  <span class="cm">// Array(2,4,6,8,10)</span>
+arr.<span class="fn">map</span>(_ * <span class="num">3</span>)          <span class="cm">// Array(3,6,9,12,...,30)</span>
+arr.<span class="fn">reverse</span>             <span class="cm">// Array(10,9,8,...,1)</span>
+arr.<span class="fn">foreach</span>(println)    <span class="cm">// print each element</span>
+
+<span class="cm">// Your exact lab code:</span>
+<span class="kw">val</span> a = Array(<span class="num">100</span>,<span class="num">200</span>,<span class="num">300</span>,<span class="num">400</span>,<span class="num">500</span>)
+<span class="kw">val</span> b = a.<span class="fn">map</span>(_ * <span class="num">5</span>)
+<span class="kw">val</span> c = b.<span class="fn">reverse</span>
+<span class="ok">a: Array(100, 200, 300, 400, 500)
+b: Array(500, 1000, 1500, 2000, 2500)
+c: Array(2500, 2000, 1500, 1000, 500)</span>
+
+<span class="cm">// ARRAYBUFFER — mutable, resizable</span>
+<span class="kw">import</span> scala.collection.mutable.ArrayBuffer  <span class="cm">// must import!</span>
+<span class="kw">var</span> a = ArrayBuffer(<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>)
+a += <span class="num">6</span>          <span class="cm">// add 6</span>
+a += <span class="num">7</span>          <span class="cm">// add 7  → ArrayBuffer(1,2,3,4,6,7)</span>
+a -= <span class="num">6</span>          <span class="cm">// remove 6 → ArrayBuffer(1,2,3,4,7)</span>
+a.<span class="fn">remove</span>(<span class="num">0</span>)  <span class="cm">// remove index 0, returns 1</span>
+a.<span class="fn">clear</span>()    <span class="cm">// empty the buffer</span></pre>
+</div>
+
+<div id="c02-list"></div>
+<div class="stitle" style="color:var(--c02)">List, Seq, Set, Map, Vector <div class="ln"></div></div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c02)">Scala</span><span class="cr">cluster 2.txt & 3.txt — all collections</span></div>
+  <pre><span class="cm">// LIST — immutable, ordered, linked-list</span>
+<span class="kw">val</span> l = List.<span class="fn">fill</span>(<span class="num">3</span>)(<span class="str">"sdff"</span>)            <span class="cm">// List(sdff,sdff,sdff)</span>
+<span class="kw">var</span> l = <span class="str">"scala"</span>::<span class="str">"df"</span>::<span class="str">"sdf"</span>::Nil    <span class="cm">// List(scala,df,sdf) — Nil = empty list</span>
+<span class="kw">val</span> a = List(<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>,<span class="num">5</span>)
+
+l :+ <span class="str">"new"</span>      <span class="cm">// append to end</span>
+<span class="str">"new"</span> +: l      <span class="cm">// prepend to front</span>
+l1 ::: l2        <span class="cm">// merge two lists</span>
+a.<span class="fn">head</span>           <span class="cm">// 1 (first element)</span>
+a.<span class="fn">tail</span>           <span class="cm">// List(2,3,4,5) — all except first</span>
+<span class="err">// ERROR: "sdf"::null → must use Nil!</span>
+
+<span class="cm">// SET — unique elements, no order</span>
+<span class="kw">val</span> s = Set(<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>)
+s.<span class="fn">apply</span>(<span class="num">2</span>)   <span class="cm">// true  ← 2 is in set (membership check)</span>
+s.<span class="fn">apply</span>(<span class="num">10</span>)  <span class="cm">// false ← 10 not in set</span>
+
+<span class="cm">// SEQ — ordered, indexed</span>
+<span class="kw">val</span> a = Seq(<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>)
+a.<span class="fn">apply</span>(<span class="num">0</span>)  <span class="cm">// 1  ← element at index 0</span>
+a.<span class="fn">apply</span>(<span class="num">2</span>)  <span class="cm">// 3  ← element at index 2</span>
+a(<span class="num">0</span>)         <span class="cm">// same as apply(0)</span>
+
+<span class="cm">// MAP — key-value pairs</span>
+<span class="kw">val</span> s = Map((<span class="str">"a"</span>,<span class="num">1</span>), (<span class="str">"b"</span>,<span class="num">3</span>), (<span class="str">"c"</span>,<span class="num">4</span>))
+s.<span class="fn">apply</span>(<span class="str">"b"</span>)  <span class="cm">// 3 ← value for key "b"</span>
+s.<span class="fn">apply</span>(<span class="str">"c"</span>)  <span class="cm">// 4 ← value for key "c"</span>
+
+<span class="cm">// VECTOR — immutable, efficient indexed sequence</span>
+<span class="kw">var</span> a = Vector(<span class="str">"sdf"</span>,<span class="str">"sdf"</span>,<span class="str">"sdfds"</span>)
+<span class="kw">var</span> b = Vector(<span class="str">"szefe"</span>,<span class="str">"ff"</span>,<span class="str">"ZERg"</span>)
+a ++ b   <span class="cm">// merge → Vector(sdf, sdf, sdfds, szefe, ff, ZERg)</span></pre>
+</div>
+
+<div class="note n-purple"><strong>apply() — the key concept from cluster 2.txt:</strong><br>
+<strong>Set.apply(x)</strong> → returns <strong>Boolean</strong> (is x in the set?)<br>
+<strong>Seq.apply(i)</strong> → returns <strong>element at index i</strong><br>
+<strong>Map.apply(k)</strong> → returns <strong>value for key k</strong></div>
+
+<div class="div"></div>
+
+<!-- ═══════════════════════ C03 ═══════════════════════ -->
+<div class="co-banner co3-b" data-label="C03">
+  <span class="co-tag" style="border-color:var(--c03);color:var(--c03);">C03</span>
+  <h2 style="color:var(--c03)">In-Memory Computation of RDDs</h2>
+  <p>Discuss in-memory computation of RDDs for faster processing — from cluster 3.txt</p>
+</div>
+
+<div id="c03-rdd"></div>
+<div class="def" style="border-color:var(--c03);background:rgba(56,189,248,0.06);">
+  <div class="def-title" style="color:var(--c03)"><span class="def-d" style="background:var(--c03)">D</span>RDD — Resilient Distributed Dataset</div>
+  <div class="def-body">
+  <strong>R</strong> = <strong>Resilient</strong> — Fault tolerant. If a node fails, Spark recomputes lost partitions using the <strong>Lineage Graph</strong> (history of transformations). No data replication needed.<br>
+  <strong>D</strong> = <strong>Distributed</strong> — Data is split into <strong>partitions</strong> and spread across multiple Worker nodes in the cluster for parallel processing.<br>
+  <strong>D</strong> = <strong>Dataset</strong> — A collection of data elements of any type (integers, strings, tuples, objects).<br><br>
+  RDDs are <strong>immutable</strong> — operations create new RDDs. <strong>Lazy evaluated</strong> — transformations don't execute until an Action is called. <strong>In-memory</strong> — data stays in RAM for fast repeated access.
+  </div>
+</div>
+
+<div class="def" style="border-color:var(--c03);background:rgba(56,189,248,0.06);">
+  <div class="def-title" style="color:var(--c03)"><span class="def-d" style="background:var(--c03)">D</span>DAG — Directed Acyclic Graph (Lineage)</div>
+  <div class="def-body">
+  The <strong>DAG</strong> is Spark's execution plan — the chain of transformations that created an RDD. <strong>Directed</strong> = has direction (steps flow one way). <strong>Acyclic</strong> = no loops. When a node fails and a partition is lost, Spark re-runs the DAG from the source to rebuild it — <strong>this is how fault tolerance works without data copies</strong>.
+  </div>
+</div>
+
+<div id="c03-create"></div>
+<div class="stitle" style="color:var(--c03)">Creating RDDs — 3 Methods <div class="ln"></div></div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c03)">Scala</span><span class="cr">cluster 3.txt — exact lab code</span></div>
+  <pre><span class="cm">// METHOD 1: parallelize() — from existing Scala data</span>
+<span class="kw">var</span> a = spark.sparkContext.<span class="fn">parallelize</span>(Seq((<span class="str">"a"</span>, <span class="num">1</span>), (<span class="str">"s"</span>, <span class="num">3</span>)))
+a.<span class="fn">foreach</span>(println)
+<span class="ok">(a,1)
+(s,3)</span>
+<span class="out">a: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[0]</span>
+
+<span class="cm">// Short form using sc (SparkContext)</span>
+<span class="kw">val</span> rdd = sc.<span class="fn">parallelize</span>(Seq(<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>,<span class="num">5</span>))
+
+<span class="cm">// METHOD 2: textFile() — read file from disk</span>
+<span class="cm">// IMPORTANT: forward slashes on Windows!</span>
+<span class="kw">var</span> a = spark.sparkContext.<span class="fn">textFile</span>(<span class="str">"C:/Users/Gayatri/Downloads/myfile.txt"</span>)
+a.<span class="fn">collect</span>()
+<span class="out">a: org.apache.spark.rdd.RDD[String] = myfile.txt MapPartitionsRDD[2]</span>
+
+<span class="err">// YOUR ERROR: "C:\Users\Gayatri\..." → invalid escape character!</span>
+<span class="cm">// Backslash \U, \D, \H are treated as escape sequences — always use /</span>
+
+<span class="cm">// METHOD 3: spark.range()</span>
+<span class="kw">val</span> a = spark.<span class="fn">range</span>(<span class="num">20</span>).<span class="fn">toDF</span>().<span class="fn">rdd</span>
+a.<span class="fn">collect</span>()
+<span class="ok">res: Array[Row] = Array([0], [1], [2], ... [19])</span></pre>
+</div>
+
+<div id="c03-transform"></div>
+<div class="stitle" style="color:var(--c03)">Transformations — LAZY (build the DAG) <div class="ln"></div></div>
+
+<div class="def" style="border-color:var(--c03);background:rgba(56,189,248,0.06);">
+  <div class="def-title" style="color:var(--c03)"><span class="def-d" style="background:var(--c03)">D</span>Transformation</div>
+  <div class="def-body">A <strong>Transformation</strong> is an operation on an RDD that returns a <strong>new RDD</strong>. Transformations are <strong>LAZY</strong> — they do not execute. Spark builds a DAG (execution plan) and waits for an <strong>Action</strong> to actually run everything. Examples: map(), filter(), flatMap(), reduceByKey().</div>
+</div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c03)">Scala</span><span class="cr">map vs flatMap — cluster 3.txt</span></div>
+  <pre><span class="cm">// map() — transforms each element, KEEPS structure (nested)</span>
+<span class="kw">val</span> b = a.<span class="fn">map</span>(r => r.<span class="fn">split</span>(<span class="str">" "</span>))
+<span class="out">b: RDD[Array[String]]</span>
+<span class="cm">// ["Hello World","Good Morning"] → [[Hello,World],[Good,Morning]]</span>
+
+<span class="cm">// flatMap() — transforms and FLATTENS (from cluster 3.txt)</span>
+<span class="kw">var</span> b = a.<span class="fn">flatMap</span>(_.split(<span class="str">" "</span>))
+b.<span class="fn">collect</span>()
+<span class="out">b: RDD[String] = MapPartitionsRDD[3]</span>
+<span class="ok">res: Array[String] = Array(Here, a, set, of, 10, multiple-choice, ...)</span>
+<span class="cm">// ["Hello World","Good Morning"] → [Hello,World,Good,Morning] ← FLAT!</span>
+
+<span class="cm">// filter() — keep elements matching condition</span>
+<span class="kw">val</span> evens = rdd.<span class="fn">filter</span>(_ % <span class="num">2</span> == <span class="num">0</span>)
+
+<span class="cm">// reduceByKey() — sum values with same key</span>
+<span class="kw">val</span> counts = pairs.<span class="fn">reduceByKey</span>(_ + _)
+
+<span class="cm">// cache() — keep RDD in memory for reuse (key for ML!)</span>
+rdd.<span class="fn">cache</span>()   <span class="cm">// next time this RDD is used → from RAM, not recomputed</span>
+
+<span class="err">// ERROR from cluster 3.txt:</span>
+a.<span class="fn">FlatMap</span>(...)   <span class="cm">// not found — must be flatMap (lowercase f!)</span></pre>
+</div>
+
+<div id="c03-actions"></div>
+<div class="stitle" style="color:var(--c03)">Actions — TRIGGER Execution <div class="ln"></div></div>
+
+<div class="def" style="border-color:var(--c03);background:rgba(56,189,248,0.06);">
+  <div class="def-title" style="color:var(--c03)"><span class="def-d" style="background:var(--c03)">D</span>Action</div>
+  <div class="def-body">An <strong>Action</strong> is an operation that <strong>triggers execution</strong> of all pending transformations and returns a result to the driver program (or writes to storage). Actions are <strong>EAGER</strong> — they run immediately. Without an Action, nothing executes. Examples: collect(), count(), take(), save().</div>
+</div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c03)">Scala</span><span class="cr">All actions from cluster 3.txt</span></div>
+  <pre><span class="kw">val</span> rdd = sc.<span class="fn">parallelize</span>(Seq(<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>,<span class="num">5</span>))
+
+rdd.<span class="fn">collect</span>()          <span class="cm">// bring ALL data to driver → Array(1,2,3,4,5)</span>
+rdd.<span class="fn">take</span>(<span class="num">2</span>)             <span class="cm">// first 2 elements → Array(1,2)</span>
+rdd.<span class="fn">count</span>()             <span class="cm">// number of rows → 5</span>
+rdd.<span class="fn">first</span>()             <span class="cm">// first element → 1</span>
+rdd.<span class="fn">foreach</span>(println)    <span class="cm">// print each element</span>
+rdd.<span class="fn">reduce</span>(_ + _)       <span class="cm">// sum all → 15</span>
+rdd.<span class="fn">saveAsTextFile</span>(<span class="str">"C:/output"</span>) <span class="cm">// write to disk</span>
+
+<span class="cm">// take() from cluster 3.txt — safe for large data!</span>
+vRDD.<span class="fn">take</span>(<span class="num">1</span>)
+<span class="ok">res: Array[(Long, String)] = Array((1,A))</span></pre>
+</div>
+
+<div id="c03-wordcount"></div>
+<div class="stitle" style="color:var(--c03)">Word Count — Complete Program <div class="ln"></div></div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c03)">Scala</span><span class="cr">Standard RDD word count — write this on paper!</span></div>
+  <pre><span class="cm">// Step 1: Load file into RDD (each element = 1 line)</span>
+<span class="kw">var</span> a = sc.<span class="fn">textFile</span>(<span class="str">"C:/Users/file.txt"</span>)
+
+<span class="cm">// Step 2: flatMap — split lines into words (flat list)</span>
+<span class="kw">val</span> words = a.<span class="fn">flatMap</span>(_.split(<span class="str">" "</span>))
+
+<span class="cm">// Step 3: map — give each word a count of 1</span>
+<span class="kw">val</span> pairs = words.<span class="fn">map</span>(word => (word, <span class="num">1</span>))
+
+<span class="cm">// Step 4: reduceByKey — add counts for same word</span>
+<span class="kw">val</span> counts = pairs.<span class="fn">reduceByKey</span>(_ + _)
+
+<span class="cm">// Step 5: Action — triggers execution!</span>
+counts.<span class="fn">collect</span>().<span class="fn">foreach</span>(println)
+<span class="ok">(Hello,2)   (World,1)   (Spark,3) ...</span></pre>
+</div>
+
+<div class="note n-blue"><strong>Transformation vs Action — Golden Rule:</strong><br>
+<strong>Transformations</strong> (map, filter, flatMap, reduceByKey) = LAZY. Return new RDD. Build the DAG. Don't execute.<br>
+<strong>Actions</strong> (collect, count, take, save, foreach) = EAGER. Trigger execution. Return result to driver.</div>
+
+<div class="div"></div>
+
+<!-- ═══════════════════════ C04 ═══════════════════════ -->
+<div class="co-banner co4-b" data-label="C04">
+  <span class="co-tag" style="border-color:var(--c04);color:var(--c04);">C04</span>
+  <h2 style="color:var(--c04)">Spark MLlib — Machine Learning</h2>
+  <p>Apply Spark MLlib for performing machine learning in big data environment</p>
+</div>
+
+<div id="c04-def"></div>
+<div class="def" style="border-color:var(--c04);background:rgba(251,146,60,0.06);">
+  <div class="def-title" style="color:var(--c04)"><span class="def-d" style="background:var(--c04)">D</span>MLlib — Machine Learning Library</div>
+  <div class="def-body"><strong>MLlib</strong> is Apache Spark's built-in, distributed machine learning library. It provides scalable implementations of common ML algorithms that run across a cluster in parallel — making it much faster than single-machine ML.<br><br>
+  MLlib works on <strong>DataFrames</strong> (the ml package) and operates through a <strong>Pipeline</strong>: data → features → model training → predictions.<br><br>
+  Key components: <strong>Estimator</strong> (fits a model on data, e.g. LinearRegression), <strong>Transformer</strong> (transforms data, e.g. VectorAssembler), <strong>Pipeline</strong> (chains multiple stages together).</div>
+</div>
+
+<div class="mem">
+  <h4 style="color:var(--c04)">MLlib Algorithms</h4>
+  <div class="mr"><span class="mk" style="color:var(--c04)">Classification</span><span class="mv"><strong>Logistic Regression, Decision Tree, Naive Bayes</strong> — predict which category (spam/not spam, pass/fail)</span></div>
+  <div class="mr"><span class="mk" style="color:var(--c04)">Regression</span><span class="mv"><strong>Linear Regression</strong> — predict a number (house price, temperature)</span></div>
+  <div class="mr"><span class="mk" style="color:var(--c04)">Clustering</span><span class="mv"><strong>K-Means</strong> — group similar data without labels (customer segments)</span></div>
+  <div class="mr"><span class="mk" style="color:var(--c04)">Recommendation</span><span class="mv"><strong>ALS</strong> — collaborative filtering (like Netflix recommendations)</span></div>
+</div>
+
+<div class="def" style="border-color:var(--c04);background:rgba(251,146,60,0.06);">
+  <div class="def-title" style="color:var(--c04)"><span class="def-d" style="background:var(--c04)">D</span>VectorAssembler</div>
+  <div class="def-body"><strong>VectorAssembler</strong> is a Transformer that combines multiple DataFrame columns into a single <strong>features vector column</strong>. All Spark ML algorithms require one single column called <code>"features"</code> of type Vector. VectorAssembler creates that column from your data columns.</div>
+</div>
+
+<div id="c04-lr"></div>
+<div class="stitle" style="color:var(--c04)">Linear Regression <div class="ln"></div></div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c04)">PySpark</span><span class="cr">Standard Linear Regression — write this on paper</span></div>
+  <pre><span class="kw">from</span> pyspark.sql <span class="kw">import</span> SparkSession
+<span class="kw">from</span> pyspark.ml.regression <span class="kw">import</span> LinearRegression
+<span class="kw">from</span> pyspark.ml.feature <span class="kw">import</span> VectorAssembler
+
+spark = SparkSession.<span class="fn">builder</span>.<span class="fn">appName</span>(<span class="str">"LR"</span>).<span class="fn">getOrCreate</span>()
+
+<span class="cm"># Step 1: Create data</span>
+data = [(<span class="num">1.0</span>, <span class="num">2.0</span>, <span class="num">5.0</span>),
+        (<span class="num">2.0</span>, <span class="num">3.0</span>, <span class="num">7.0</span>),
+        (<span class="num">3.0</span>, <span class="num">4.0</span>, <span class="num">9.0</span>)]
+df = spark.<span class="fn">createDataFrame</span>(data, [<span class="str">"x1"</span>, <span class="str">"x2"</span>, <span class="str">"label"</span>])
+
+<span class="cm"># Step 2: Assemble features into one vector column</span>
+assembler = VectorAssembler(
+    inputCols=[<span class="str">"x1"</span>, <span class="str">"x2"</span>],
+    outputCol=<span class="str">"features"</span>
+)
+df = assembler.<span class="fn">transform</span>(df)
+
+<span class="cm"># Step 3: Train model</span>
+lr = LinearRegression(featuresCol=<span class="str">"features"</span>, labelCol=<span class="str">"label"</span>)
+model = lr.<span class="fn">fit</span>(df)        <span class="cm"># fit() = train the model</span>
+
+<span class="cm"># Step 4: Predict</span>
+predictions = model.<span class="fn">transform</span>(df)   <span class="cm"># transform() = apply model</span>
+predictions.<span class="fn">show</span>()</pre>
+</div>
+
+<div id="c04-kmeans"></div>
+<div class="stitle" style="color:var(--c04)">K-Means Clustering — Most Asked! <div class="ln"></div></div>
+
+<div class="def" style="border-color:var(--c04);background:rgba(251,146,60,0.06);">
+  <div class="def-title" style="color:var(--c04)"><span class="def-d" style="background:var(--c04)">D</span>K-Means Clustering</div>
+  <div class="def-body"><strong>K-Means</strong> is an unsupervised clustering algorithm. It groups data into <strong>k clusters</strong> where each data point belongs to the cluster with the nearest <strong>centroid</strong> (cluster center). <strong>k</strong> is the number of clusters you specify. K-Means iterates until cluster centers stop changing (converges). Spark's MLlib K-Means is distributed — runs across the cluster in parallel.</div>
+</div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c04)">PySpark</span><span class="cr">K-Means — write this on paper!</span></div>
+  <pre><span class="kw">from</span> pyspark.ml.clustering <span class="kw">import</span> KMeans
+<span class="kw">from</span> pyspark.ml.feature <span class="kw">import</span> VectorAssembler
+<span class="kw">from</span> pyspark.sql <span class="kw">import</span> SparkSession
+
+spark = SparkSession.<span class="fn">builder</span>.<span class="fn">appName</span>(<span class="str">"KMeans"</span>).<span class="fn">getOrCreate</span>()
+
+<span class="cm"># Sample data — 4 points, clearly 2 groups</span>
+data = [(<span class="num">0.0</span>, <span class="num">0.0</span>), (<span class="num">1.0</span>, <span class="num">1.0</span>),
+        (<span class="num">9.0</span>, <span class="num">8.0</span>), (<span class="num">8.0</span>, <span class="num">9.0</span>)]
+df = spark.<span class="fn">createDataFrame</span>(data, [<span class="str">"x"</span>, <span class="str">"y"</span>])
+
+<span class="cm"># Assemble x, y into single features column</span>
+assembler = VectorAssembler(
+    inputCols=[<span class="str">"x"</span>, <span class="str">"y"</span>],
+    outputCol=<span class="str">"features"</span>
+)
+df = assembler.<span class="fn">transform</span>(df)
+
+<span class="cm"># Train K-Means with k=2 clusters</span>
+kmeans = KMeans(k=<span class="num">2</span>, seed=<span class="num">1</span>)
+model = kmeans.<span class="fn">fit</span>(df)
+
+<span class="cm"># Print cluster centers</span>
+centers = model.clusterCenters()
+<span class="fn">print</span>(<span class="str">"Cluster Centers:"</span>, centers)
+<span class="ok">Cluster Centers: [array([0.5, 0.5]), array([8.5, 8.5])]</span>
+
+<span class="cm"># Assign cluster to each point</span>
+result = model.<span class="fn">transform</span>(df)
+result.<span class="fn">show</span>()
+<span class="ok">+---+---+-------+-----------+
+|  x|  y|features|prediction|
++---+---+-------+-----------+
+|0.0|0.0| [0,0] |          0|
+|1.0|1.0| [1,1] |          0|
+|9.0|8.0| [9,8] |          1|
+|8.0|9.0| [8,9] |          1|
++---+---+-------+-----------+</span></pre>
+</div>
+
+<div class="note n-orange"><strong>Viva answers for MLlib:</strong><br>
+<strong>fit()</strong> = train the model on the data (Estimator → Model)<br>
+<strong>transform()</strong> = apply the model to data, add prediction column (Transformer)<br>
+<strong>VectorAssembler</strong> = required because all ML algorithms need a single "features" column of type Vector<br>
+<strong>k in K-Means</strong> = number of clusters to find (you must specify this!)</div>
+
+<div class="div"></div>
+
+<!-- ═══════════════════════ C05 ═══════════════════════ -->
+<div class="co-banner co5-b" data-label="C05">
+  <span class="co-tag" style="border-color:var(--c05);color:var(--c05);">C05</span>
+  <h2 style="color:var(--c05)">Big Data Processing with DataFrames</h2>
+  <p>Workflows, processing and analysis of big data using Apache Spark — from cluster 4.txt & method 1 file</p>
+</div>
+
+<div id="c05-def"></div>
+<div class="def" style="border-color:var(--c05);background:rgba(52,211,153,0.06);">
+  <div class="def-title" style="color:var(--c05)"><span class="def-d" style="background:var(--c05)">D</span>DataFrame</div>
+  <div class="def-body"><strong>DataFrame</strong> is a <strong>distributed collection of data organized into named columns</strong> — like a table in a relational database or a spreadsheet. Built on top of RDD, it adds schema (column names + types), SQL support, and automatic optimization via the <strong>Catalyst Optimizer</strong>.<br><br>
+  DataFrame advantages over RDD: named columns, automatic optimization, SQL queries, better error messages, easier API.</div>
+</div>
+
+<div class="def" style="border-color:var(--c05);background:rgba(52,211,153,0.06);">
+  <div class="def-title" style="color:var(--c05)"><span class="def-d" style="background:var(--c05)">D</span>SparkSession</div>
+  <div class="def-body"><strong>SparkSession</strong> is the <strong>unified entry point</strong> for Spark 2.x+. It combines SparkContext + SQLContext + HiveContext into one object. Auto-created as <code>spark</code> in spark-shell. Used for DataFrames, SQL, and streaming. SparkSession internally contains SparkContext (<code>spark.sparkContext</code>).</div>
+</div>
+
+<div id="c05-create"></div>
+<div class="stitle" style="color:var(--c05)">Creating DataFrames — 3 Methods <div class="ln"></div></div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c05)">Scala</span><span class="cr">cluster 4.txt + method 1 file — exact code</span></div>
+  <pre><span class="cm">// ALWAYS import first! (enables toDF)</span>
+<span class="kw">import</span> spark.implicits._
+
+<span class="cm">// ── METHOD 1: toDF() without column names ──</span>
+<span class="kw">val</span> data = Seq((<span class="str">"lucky"</span>,<span class="num">34</span>),(<span class="str">"chikku"</span>,<span class="num">45</span>),(<span class="str">"niklesh"</span>,<span class="num">34</span>),
+               (<span class="str">"arjun"</span>,<span class="num">67</span>),(<span class="str">"gun"</span>,<span class="num">56</span>),(<span class="str">"don"</span>,<span class="num">45</span>))
+<span class="kw">val</span> rdd = sc.<span class="fn">parallelize</span>(data)
+<span class="kw">val</span> df1 = rdd.<span class="fn">toDF</span>()       <span class="cm">// columns auto-named _1, _2</span>
+df1.<span class="fn">show</span>()
+<span class="ok">+-------+---+
+|     _1| _2|
++-------+---+
+|  lucky| 34|
+| chikku| 45|
+|niklesh| 34|
+|  arjun| 67|
+|    gun| 56|
+|    don| 45|
++-------+---+</span>
+
+<span class="cm">// ── METHOD 2: createDataFrame + toDF(col:_*) → named columns ──</span>
+<span class="cm">// From your "method 1 to create df cluster.txt" file</span>
+<span class="kw">val</span> col = Seq(<span class="str">"team"</span>, <span class="str">"matches"</span>)
+<span class="kw">val</span> data = Seq((<span class="str">"india"</span>,<span class="num">300</span>), (<span class="str">"aus"</span>,<span class="num">300</span>), (<span class="str">"eng"</span>,<span class="num">344</span>))
+<span class="kw">val</span> rdd = spark.sparkContext.<span class="fn">parallelize</span>(data)
+<span class="kw">val</span> df1 = spark.<span class="fn">createDataFrame</span>(rdd).<span class="fn">toDF</span>(col:_*)
+<span class="cm">// col:_* = spread Seq as individual arguments</span>
+df1.<span class="fn">show</span>()
+<span class="ok">+-----+-------+
+| team|matches|
++-----+-------+
+|india|    300|
+|  aus|    300|
+|  eng|    344|
++-----+-------+</span>
+
+<span class="cm">// ── METHOD 3: toDF() with direct names (simplest) ──</span>
+<span class="kw">val</span> df = data.<span class="fn">toDF</span>(<span class="str">"name"</span>, <span class="str">"marks"</span>)   <span class="cm">// column names inline</span></pre>
+</div>
+
+<div class="note n-err"><strong>Errors from your lab files — never repeat these:</strong><br>
+❌ <code>spark.sparkContect.parallize</code> — TWO errors: sparkContect (missing x) + parallize (missing l)<br>
+✅ <code>spark.sparkContext.parallelize</code><br><br>
+❌ <code>dfl.show()</code> → not found (letter 'l' not digit '1')<br>
+✅ <code>df1.show()</code> — digit one, not lowercase L<br><br>
+❌ forget <code>import spark.implicits._</code> before toDF()<br>
+✅ always put this import at the top!</div>
+
+<div id="c05-ops"></div>
+<div class="stitle" style="color:var(--c05)">DataFrame Operations <div class="ln"></div></div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c05)">Scala</span><span class="cr">All DataFrame operations</span></div>
+  <pre><span class="cm">// DISPLAY</span>
+df.<span class="fn">show</span>()              <span class="cm">// print first 20 rows as table</span>
+df.<span class="fn">show</span>(<span class="num">5</span>)             <span class="cm">// show only 5 rows</span>
+df.<span class="fn">printSchema</span>()      <span class="cm">// show column names + types</span>
+
+<span class="cm">// INFO</span>
+df.<span class="fn">count</span>()             <span class="cm">// number of rows</span>
+df.columns             <span class="cm">// Array of column names</span>
+df.dtypes              <span class="cm">// Array of (colName, type)</span>
+
+<span class="cm">// SELECT columns</span>
+df.<span class="fn">select</span>(<span class="str">"name"</span>)                   <span class="cm">// one column</span>
+df.<span class="fn">select</span>(<span class="str">"name"</span>, <span class="str">"marks"</span>)          <span class="cm">// two columns</span>
+
+<span class="cm">// FILTER rows</span>
+df.<span class="fn">filter</span>(df(<span class="str">"marks"</span>) > <span class="num">50</span>).<span class="fn">show</span>()
+<span class="ok">+-----+-----+
+| name|marks|
++-----+-----+
+|arjun|   67|
+|  gun|   56|
++-----+-----+</span>
+
+<span class="cm">// ORDER BY</span>
+df.<span class="fn">orderBy</span>(<span class="str">"marks"</span>).<span class="fn">show</span>()           <span class="cm">// ascending</span>
+
+<span class="cm">// GROUP BY + aggregate</span>
+df.<span class="fn">groupBy</span>(<span class="str">"marks"</span>).<span class="fn">count</span>().<span class="fn">show</span>()
+
+<span class="cm">// printSchema output</span>
+df.<span class="fn">printSchema</span>()
+<span class="ok">root
+ |-- team: string (nullable = true)
+ |-- matches: integer (nullable = true)</span></pre>
+</div>
+
+<div id="c05-sql"></div>
+<div class="stitle" style="color:var(--c05)">Spark SQL <div class="ln"></div></div>
+
+<div class="def" style="border-color:var(--c05);background:rgba(52,211,153,0.06);">
+  <div class="def-title" style="color:var(--c05)"><span class="def-d" style="background:var(--c05)">D</span>Spark SQL</div>
+  <div class="def-body"><strong>Spark SQL</strong> is Spark's module for structured data processing that allows running standard SQL queries on DataFrames. You first register a DataFrame as a <strong>temporary view</strong> (like a virtual table), then run any SQL query on it using <code>spark.sql()</code>. This returns a new DataFrame as output.</div>
+</div>
+
+<div class="cw">
+  <div class="ch"><span class="cl" style="color:var(--c05)">Scala</span><span class="cr">Complete end-to-end pipeline — write this on paper!</span></div>
+  <pre><span class="cm">// ── COMPLETE PIPELINE ──</span>
+<span class="kw">import</span> spark.implicits._
+
+<span class="kw">val</span> col = Seq(<span class="str">"student"</span>, <span class="str">"marks"</span>)
+<span class="kw">val</span> data = Seq(
+  (<span class="str">"lucky"</span>, <span class="num">34</span>), (<span class="str">"chikku"</span>, <span class="num">45</span>), (<span class="str">"niklesh"</span>, <span class="num">34</span>),
+  (<span class="str">"arjun"</span>, <span class="num">67</span>), (<span class="str">"gun"</span>, <span class="num">56</span>), (<span class="str">"don"</span>, <span class="num">45</span>)
+)
+<span class="kw">val</span> rdd = sc.<span class="fn">parallelize</span>(data)
+<span class="kw">val</span> df = spark.<span class="fn">createDataFrame</span>(rdd).<span class="fn">toDF</span>(col:_*)
+df.<span class="fn">show</span>()
+
+<span class="cm">// Register as SQL view</span>
+df.<span class="fn">createOrReplaceTempView</span>(<span class="str">"students"</span>)
+
+<span class="cm">// Run SQL queries!</span>
+spark.<span class="fn">sql</span>(<span class="str">"SELECT * FROM students WHERE marks > 50"</span>).<span class="fn">show</span>()
+<span class="ok">+-------+-----+
+|student|marks|
++-------+-----+
+|  arjun|   67|
+|    gun|   56|
++-------+-----+</span>
+
+spark.<span class="fn">sql</span>(<span class="str">"SELECT student, marks FROM students ORDER BY marks DESC"</span>).<span class="fn">show</span>()
+spark.<span class="fn">sql</span>(<span class="str">"SELECT COUNT(*) FROM students WHERE marks >= 45"</span>).<span class="fn">show</span>()</pre>
+</div>
+
+<div class="note n-green"><strong>Big Data workflow in Spark (C05 syllabus):</strong><br>
+<strong>Ingestion</strong> → textFile() or read.csv() loads data into RDD/DataFrame<br>
+<strong>Processing</strong> → map, filter, flatMap transformations clean and transform<br>
+<strong>Analysis</strong> → groupBy, orderBy, SQL queries analyze patterns<br>
+<strong>Output</strong> → show(), saveAsTextFile(), write.csv() outputs results</div>
+
+<div style="height:60px;"></div>
+
+</main>
+
+<script>
+// Highlight active sidebar link on scroll
+const links = document.querySelectorAll('.sb-link');
+const sections = [];
+links.forEach(link => {
+  const id = link.getAttribute('href').replace('#','');
+  const el = document.getElementById(id);
+  if(el) sections.push({id, el, link});
+});
+
+const main = document.querySelector('.main');
+main.addEventListener('scroll', () => {
+  let current = sections[0];
+  sections.forEach(s => {
+    if(s.el.getBoundingClientRect().top - 100 <= 0) current = s;
+  });
+  links.forEach(l => l.classList.remove('active'));
+  if(current) current.link.classList.add('active');
+});
+</script>
+</body>
+</html>
